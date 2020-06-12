@@ -1,0 +1,2 @@
+hideIt.sh --name '^drop-down-terminal$' --toggle &
+

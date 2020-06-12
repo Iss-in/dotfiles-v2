@@ -1,0 +1,76 @@
+sw_volume: 100
+audio_device_state:1:pulse audio
+audio_device_state:1:my_fifo
+state: play
+current: 15
+time: 9.119000
+random: 0
+repeat: 0
+single: 0
+consume: 0
+crossfade: 5
+mixrampdb: 0.000000
+mixrampdelay: -1.000000
+playlist_begin
+0:The Local Train/The Local Train - Choo Lo.mp3
+1:The Local Train/The Local Train - Khudi.mp3
+2:Ankur Tewari - Dil Beparvah - The Dewarists Season 5.mp3
+3:Deepak Rathore Project - Pahadan.mp3
+4:Prateek Kuhad - Tune Kaha.mp3
+5:The Local Train/The Local Train - Aakhri Salaam.mp3
+6:Tochi Raina - Kabira.mp3
+7:Amaal Mallik - Ghar Se Nikalte Hi (feat Armaan Malik).mp3
+8:Mohit Chauhan - Pee Loon.mp3
+9:Amaal Mallik - Soch Na Sake.mp3
+10:Amit Mishra - Galti Se Mistake Unplugged.mp3
+11:Vishal-Shekhar - Sadka.mp3
+12:Lou Bega - Mambo No 5 (a Little Bit of).mp3
+13:Sachin-Jigar - Saibo.mp3
+14:Shawn Mendes - Theres Nothing Holdin Me Back.mp3
+15:Shawn Mendes - Treat You Better.mp3
+16:Asit Tripathy - Tu Banja Gali Benaras Ki.mp3
+17:Yasser Desai - Jogi.mp3
+18:Rabba Main Toh Mar Gaya Oyee.mp3
+19:Rahul Mishra - Dil De Huzoora.mp3
+20:leja leja re -Shreya Ghosal.mp3
+21:T-Series - 'Zindagi Kuch Toh Bata (Reprise)' Full AUDIO Song  Salman Khan Kareena Kapoor  Bajrangi Bhaijaan.mp3
+22:Suryaveer - Mere Rang Mein  Valentines Day Special  Suryaveer.mp3
+23:Swanand Kirkire - Tu Kisi Rail Si.mp3
+24:Amit Trivedi - Naina Da Kya Kasoor.mp3
+25:Arijit Singh - Ghungroo (From War).mp3
+26:Ali Zafar - Voh Dekhnay Mein.mp3
+27:Chala Jata Hoon.mp3
+28:Chala Jata Hoon.mp3
+29:Sanam - Gulabi Aankhen.mp3
+30:Hai Apna Dil To Awara _ Sanam.mp3
+31:Neele Neele Ambar Par - Sanam.mp3
+32:O Mere Dil Ke Chain _ Sanam.mp3
+33:Yeh Raaten Yeh Mausam _ Sanam ft. Simran Sehgal.mp3
+34:Chala Jata Hoon.mp3
+35:Sanam - Gulabi Aankhen.mp3
+36:Mika Singh - Sajh Dhaj Ke.mp3
+37:Benny Dayal - Pappu Cant Dance.mp3
+38:Charlie Puth - We Dont Talk Anymore (feat Selena Gomez).mp3
+39:Charlie Puth - Attention.mp3
+40:Wiz Khalifa - See You Again (feat Charlie Puth).mp3
+41:Sreeram - Subhanallah.mp3
+42:Arijit Singh - Dil Royi Jaye (From De De Pyaar De).mp3
+43:Arijit Singh - Raakh.mp3
+44:Arijit#Singh's#hit#track#-#'Jo#Bheji#Thi#Dua'#from#Shanghai..mp3
+45:Armaan Malik - Kyun Rabba.mp3
+46:Eros Now - Mann Mera (Video Song)  Table No21  Tina Desai  Rajeev Khandelwal.mp3
+47:Green Day - 21 Guns.mp3
+48:Shakira - waka waka.mp3
+49:Santosh Yadav Madhur - Mere Rashke kamar.mp3
+50:Arijit Singh - Tu hi hai Aashiqui.mp3
+51:Rochak - Tu Hi Yaar Mera (From Pati Patni Aur Woh).mp3
+52:Amaal Mallik - Buddhu Sa Mann.mp3
+53:Amit Trivedi - Iktara.mp3
+54:Shakira - Chantaje (feat Maluma).mp3
+55:Rashid Ali - Kabhi Kabhi Aditi.mp3
+56:Neha Kakkar - Ek Toh Kum Zindagani (From Marjaavaan).mp3
+57:Ayushmann Khurrana - Saadi Galli Aaja.mp3
+58:Post Malone - Sunflower - Spider-Man Into the Spider-Verse.mp3
+59:Evolve/02-imagine_dragons-whatever_it_takes.mp3
+60:Shankar-Ehsaan-Loy - Achha Lagta Hai (From Aarakshan).mp3
+playlist_end

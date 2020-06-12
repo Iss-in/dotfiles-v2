@@ -1,0 +1,19 @@
+qwal -R &
+mpd &
+while true; do
+    sleep 1
+    pos="$(xdotool getmouselocation --shell)"
+    a=(${pos[0]})
+    x=${a[0]}
+    x=${x:2}
+    y=${a[1]}
+    y=${y:2}
+    echo $y
+    if [[ $y -lt 3 ]]
+    then
+        # echo $y "out of bound"
+        # break
+        ~/.scripts/toogle.sh 2
+    fi
+done
+

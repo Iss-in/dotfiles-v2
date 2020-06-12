@@ -1,0 +1,8 @@
+num="$(i3-msg -t get_workspaces \
+  | jq '.[] | select(.).name' \
+  | cut -d"\"" -f2)"
+a=(${num[0]})
+b=${a[-1]}
+((b=b+1))
+xdotool keydown super  key  $b keyup super
+termite -t termite &

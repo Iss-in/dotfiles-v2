@@ -1,0 +1,6 @@
+magick composite -geometry 124x25+32+5 p1.png wall.jpg  s1.jpg
+magick composite -geometry 344x25+180+2 p2.png s1.jpg  s2.jpg
+magick composite -geometry 244x25+815+2 p3.png s2.jpg  s3.jpg
+magick composite -geometry 314x25+1312+2 p4.png s3.jpg  s4.jpg
+magick composite -geometry 104x25+1650+2 p5.png s4.jpg  s5.jpg
+magick composite -geometry 104x25+1780+2 p6.png s5.jpg  final.jpg

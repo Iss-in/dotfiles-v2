@@ -1,0 +1,15 @@
+#!/bin/sh
+
+blur() {
+    hsetroot -fill $HOME/wall.png -blur ${1:-5}
+}
+
+wew | while IFS=: read ev wid; do
+    case $ev in
+        # window creation
+        16) wattr o "$wid" || test "$(lsw)" = "$wid" && blur ;;
+
+        # window deletion
+        18) test -z "$(lsw)" && blur 0 ;;
+    esac
+done

@@ -1,0 +1,2 @@
+WID=$(pfw)
+chwb -c 0x8064cc -s 10 

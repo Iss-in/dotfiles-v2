@@ -1,0 +1,55 @@
+#!/bin/sh
+# This bspwm helper takes an argument: 1-9, to place the current floating window
+# according to the matrix: 7 8 9
+#                          4 5 6
+#                          1 2 3
+# Requirements: xdotool.
+
+# get the current screen presets
+# SCREEN=`xrandr | grep '*' | awk '{print $1}'`
+# SCREEN_X=1920
+# SCREEN_Y=1080
+# BORDER=`bspc config border_width`
+# GAP=0
+# # echo $GAP
+# # get the current window geometry
+# eval `xdotool getactivewindow getwindowgeometry --shell`
+
+# # calculate new coordinates
+# H1=1052
+# H2=526
+# L1=1920
+# L2=960
+
+SCREEN_X=1920
+SCREEN_Y=1080
+GAP=0
+H1=1052
+H2=526
+L1=1920
+L2=960
+
+X1=0
+X2=960
+Y1=28
+Y2=554
+
+WINDOW=$(bspwindows active)
+case $1 in
+    1) xdotool windowmove $WINDOW $X1 $Y2
+	   xdotool windowsize $WINDOW $L2 $H2   ;;
+    2) xdotool windowmove $WINDOW $X1 $Y2    
+        xdotool windowsize $WINDOW $L1 $H2 ;;
+    3) xdotool windowmove $WINDOW $X2 $Y2
+	   xdotool windowsize $WINDOW $L2 $H2   ;;
+    4) xdotool windowmove $WINDOW $X1 $Y1 
+	    xdotool windowsize $WINDOW $L2 $H1  ;;
+    6) xdotool windowmove $WINDOW $X2 $Y1 
+	    xdotool windowsize $WINDOW $L2 $H1  ;;
+    7) xdotool windowmove $WINDOW $X1 $Y1
+	   xdotool windowsize $WINDOW $L2 $H2   ;;
+    8) xdotool windowmove $WINDOW $X1 $Y1 
+        xdotool windowsize $WINDOW $L1 $H2 ;;
+    9) xdotool windowmove $WINDOW $X2 $Y1
+	   xdotool windowsize $WINDOW $L2 $H2   ;;
+esac

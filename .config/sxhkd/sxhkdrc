@@ -1,0 +1,148 @@
+## Launch terminal
+super + Return
+	kitty
+
+## Drawing terminal
+super + shift + Return
+	urdraw
+
+super + r
+	bspc node @/ -R 90	
+
+super + l
+	i3lock
+## Launch Rofi start menu
+alt + F1
+	~/.config/rofi/bin/launcher
+	rofi -modi "drun,run" -show drun
+
+alt + F2
+	hideIt.sh --name dropdown --toggle
+
+super + l
+	blurlock
+
+## Launch common apps
+super + shift + {f,w,g}
+	{thunar,firefox,geany}
+super + n
+	nautilus -w
+	
+super + x
+	xpad -t
+
+## Take a screenshot
+Print
+	scrot '%F_%H-%M-%S.png' -e 'mv $f ~/Pictures/screenshots/ ' && dunstify 'Screenshot' 'taken' -i ~/.icons/custom/screenshot1.svg -p > /tmp/sshot.pid -r "$(cat /tmp/sshot.pid)" 
+	#scrot 'Screenshot_%y.%m.%d_%H.%M.%S.png' \
+	#-e 'mv $f ~/Pictures/screenshots/ ; viewnior ~/Pictures/screenshots/$f'
+
+	
+## Volume control
+XF86Audio{RaiseVolume,LowerVolume,Mute}
+	amixer {-q set Master 5%+,-q set Master 5%-,set Master toggle}
+	
+## Music control
+XF86Audio{Next,Prev,Play,Stop}
+	mpc {next,prev,toggle,stop}
+
+## Show now-playing
+super + m
+	bspc desktop -l next
+
+## Make sxhkd reload its configuration files
+super + shift + s
+	pkill -USR1 -x sxhkd
+
+## Quit bspwm normally
+super + control + Escape
+	killall vanela; bspc quit
+
+## Reload bspwm config
+super + shift + r
+	~/.config/bspwm/bspwmrc
+	#killall vanela; bspwmrc
+
+## Close or kill app
+super + {_,shift + }c
+	bspc node {-c,-k}
+
+## Close app (common way)
+ctrl + space
+	bspc node -c
+
+## Fullscreen / Monocle
+super + f
+	bspc node -t \~fullscreen
+
+super + {Left,Right,Down,Up}
+    bspc node -t floating & /home/kushy/.config/bspwm/scripts/resize {4,6,2,8}
+
+## Split horizontal, split vertical, or cancel
+super + {h,v,r}
+	bspc node -p {east,south,cancel}
+
+## Toggle beetwen floating & tiled
+super + space
+    bspc node -t "~"{floating,tiled} 
+
+## Pseudo Tiled & tiled mode
+super + {p,t}
+    bspc node -t {pseudo_tiled,tiled}
+
+## Send the window to another edge of the screen
+super + {_,shift + }{Left,Down,Up,Right}
+	bspc node -{f,s} {west,south,north,east}
+
+## Change focus to next window, including floating window
+alt + {_,shift + }Tab
+	bspc node -f {next.local,prev.local}
+
+## Switch workspace
+ctrl + alt + {Left,Right}
+	bspc desktop -f {prev.local,next.local}
+
+## Switch to last opened workspace
+super + grave
+	skippy-xd 
+	
+## Send focused window to another workspace
+super + {_,shift + }{1-6}
+	bspc {desktop -f,node -d} '^{1-6}'
+
+alt + {1-4,5}
+		bspc desktop -f {I,II,III,IV,V}
+
+		# desktop='^{1-6}'; \
+		# bspc query -D -d "$desktop.focused" && bspc desktop -f last || bspc desktop -f "$desktop"
+
+## Expanding windows
+super + control + {Left,Right,Up,Down}
+	bspc node -z {left -20 20,right 20 0,top 0 -20,bottom 0 20}
+	
+## Shrinking windows
+super + alt + {Left,Right,Up,Down}
+	bspc node -z {left 20 0,right -20 0,top 0 20,bottom 0 -20}
+	
+## Move floating windows
+alt + shift + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+super + s
+    bspc node -g sticky
+
+Num_Lock
+	sleep  1  && numlockx on
+
+
+#super + ctrl + {m,x,y,z}
+#	bspc node -g {marked,locked,sticky,private}
+
+super + KP_Add
+	xbacklight -inc 10 && dunstify "Brightness is" "$(printf %.0f $(xbacklight -get))" -r 100 -i /home/kushy/.icons/custom/brightness.svg
+
+super + KP_Subtract 
+	xbacklight -dec 10 && dunstify "Brightness is" "$(printf %.0f $(xbacklight -get))" -r 100 -i /home/kushy/.icons/custom/brightness.svg
+
+super +  m
+	/usr/bin/bash /home/kushagra/.config/conky/conky.sh 1 

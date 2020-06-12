@@ -1,0 +1,13 @@
+#!/bin/sh
+num="$(i3-msg -t get_workspaces \
+  | jq '.[] | select(.focused==true).name' \
+  | cut -d"\"" -f2)"
+#a=(${num[0]})
+#b=${a[0]}
+#echo $a
+if [[ $num -eq 11 ]]
+then
+  echo "0"
+else
+  echo "$num"
+fi

@@ -1,0 +1,1 @@
+rofi -modi   -display-drun ' ' -yoffset -10 -xoffset 0

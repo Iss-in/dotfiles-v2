@@ -1,0 +1,6 @@
+dir=$1
+time=$2
+for f in $dir/*.*g;do
+    feh --bg-fill $f
+    sleep $time
+done

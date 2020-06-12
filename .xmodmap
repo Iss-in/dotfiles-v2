@@ -1,0 +1,9 @@
+
+keycode 110 = Delete NoSymbol Delete
+! keycode 119 = Home NoSymbol Home
+! keycode  21 = Pause Break Pause Break 
+keycode 127 = equal plus
+keycode 135 = Super_R
+keycode 85 = 6 asciicircum
+!keycode 86 = 5 percent
+keycode 90 = 0 parenright

@@ -1,0 +1,94 @@
+conky.config = {
+
+    background = true,
+    own_window = true,
+    own_window_type = 'desktop',
+    own_window_transparent = true,
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+    own_window_colour = '#1d2021',
+    --own_window_colour = '#222222',
+
+    own_window_class = 'Conky',
+    own_window_title = 'Conky-calendar',
+    own_window_argb_visual = false,
+    own_window_argb_value = 0,
+    minimum_width = 600, 
+    minimum_height = 190,
+    maximum_width = 550,
+
+    gap_x = 20,--## left | right
+    gap_y = 70,--## up | down
+
+    alignment = 'tm',
+
+    --### End Window Settings  ###
+
+
+    --###      Font Settings   ###
+    use_xft = true,
+    font = 'RoundedMplus1c Nerd Font:bold:size=10',
+
+    xftalpha = 1,
+    override_utf8_locale = true,
+
+    uppercase = false,
+
+
+
+    draw_shades = false,--yes
+    default_shade_color = 'black',
+
+    draw_outline = false,-- amplifies text if yes
+    default_outline_color = 'black',
+
+    default_color = '1d2021',-- PureWhite
+    color0 = '#40e0d0',-- cyan
+    color1 = '#778899',-- LightSlateGray
+    color2 = '#D8BFD8',-- Thistle
+    color3 = '#9ACD32',-- YellowGreen
+    color4 = '#FFA07A',-- LightSalmon
+    color5 = '#FFDEAD',-- NavajoWhite
+    color6 = '#00BFFF',-- DeepSkycyan
+    color7 = '#5F9EA0',-- Cadetcyan
+    color8 = '#BDB76B',-- DarkKhaki
+    color9 = '#CD5C5C',-- IndianRed
+
+    draw_borders = true,
+    -- Stippled borders?
+    stippled_borders = 0,
+    -- border margins
+    border_inner_margin = 0,
+    border_outer_margin = 0,
+    -- border width
+    border_width = 0,
+    -- graph borders
+    draw_graph_borders = true,--no
+  
+
+    use_spacer = 'none',
+    text_buffer_size = 6144,
+
+  --no_buffers = true,
+
+    short_units = true,
+    pad_percents = 0,
+    imlib_cache_size = 0,
+    double_buffer = true,
+   -- lua_load = '/home/kushagra/.config/conky/script.lua',
+   -- lua_draw_hook_post = "main",
+
+
+    --################  End Miscellaneoulus Section  ###
+
+    update_interval = 1,
+    };
+
+    conky.text = [[
+    ${image ~/.config/conky/back.png  -p -1,-1 -s 570x00}
+    ${image ~/.config/conky/sep.png  -p 200,2 -s 1x90}
+    ${image ~/.config/conky/bebe.gif  -p 15,15 -s 40x40}
+    ${voffset -50}${offset 45}${color white}Welcome kushy     ${font RoundedMplus1c Nerd Font:bold:size=8}${color #fff}${offset -120}${voffset 20}${execpi 1200 cat /tmp/weather.txt }
+    ${font RoundedMplus1c Nerd Font:bold:size=10}${offset 202}${voffset -40}${color #6A9FB5}  ${color white}${execpi 100 ~/.scripts/quote.sh text }  ${color #6A9FB5} 
+    ${font RoundedMplus1c Nerd Font:bold:size=9}$alignr${offset -10}${voffset 0}${color #F4BF75}- ${execpi 100 ~/.scripts/quote.sh author }
+    #${font RoundedMplus1c Nerd Font:bold:size=8}${color #fff}${voffset 15}${execpi 1000 ~/.scripts/calendar.sh }
+    ]]

@@ -1,0 +1,7 @@
+#!/bin/bash
+var=$1
+val=$2
+echo $var $val
+config="/home/kushy/.config/polybar/bspwm-6.ini"
+sed -i "s/$var=.*/$var=$val/g" $config
+~/.config/polybar/bspwm-6.sh

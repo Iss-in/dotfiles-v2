@@ -1,0 +1,10 @@
+configuration {
+  show-icons:         true;
+  icon-theme:         "Papirus";
+  cycle:              false;
+  hide-scrollbar:     true;
+  disable-history:    false;
+  kb-cancel: "Escape,Control+g,Alt+F1";
+  theme :             "/home/kushy/.config/rofi/config-monocle.rasi";
+
+}

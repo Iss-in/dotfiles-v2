@@ -1,0 +1,10 @@
+#!/bin/bash
+while true;
+do
+    pos="$(xdotool getmouselocation --shell)"
+    a=(${pos[0]})
+    x=$( echo ${a[0]} | sed 's/X=//') 
+    y=$( echo ${a[1]} | sed 's/Y=//') 
+    echo $x , $y
+
+done

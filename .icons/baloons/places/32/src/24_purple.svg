@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="24_purple.svg"
+   id="svg5"
+   version="1.1"
+   viewBox="0 0 32 32"
+   height="32px"
+   width="32px">
+  <metadata
+     id="metadata11">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs9" />
+  <sodipodi:namedview
+     inkscape:current-layer="svg5"
+     inkscape:window-maximized="1"
+     inkscape:window-y="59"
+     inkscape:window-x="25"
+     inkscape:cy="17.342847"
+     inkscape:cx="17.245931"
+     inkscape:zoom="12.315921"
+     showgrid="false"
+     id="namedview7"
+     inkscape:window-height="966"
+     inkscape:window-width="1870"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <g
+     id="surface1">
+    <path
+       id="path2"
+       d="M 16 0.5 C 7.4375 0.5 0.5 7.4375 0.5 16 C 0.5 24.5625 7.4375 31.5 16 31.5 C 24.5625 31.5 31.5 24.5625 31.5 16 C 31.5 7.4375 24.5625 0.5 16 0.5 Z M 16 0.5 "
+       style=" stroke:none;fill-rule:nonzero;fill:#1d2021;fill-opacity:1;" />
+  </g>
+  <path
+     id="path244"
+     d="M 15.625,4 C 9.203125,4 4,9.203125 4,15.625 4,22.046875 9.203125,27.25 15.625,27.25 22.046875,27.25 27.25,22.046875 27.25,15.625 27.25,9.203125 22.046875,4 15.625,4 Z m 0,0"
+     style="fill:#9e73c2;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+</svg>

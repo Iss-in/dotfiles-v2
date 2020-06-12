@@ -1,0 +1,186 @@
+VteTerminal, vte-terminal {
+padding: 30px;
+}
+
+/*  Light Mode */
+/*
+.nautilus-window {
+ background-image: url('jack4.png');
+
+  background-color: #dbdcde ;
+  background-size: auto ;
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  margin: 230px 240px 240px 240px;
+}
+*/
+
+/*  Dark Mode */ 
+.nautilus-window {
+ /*background-image: linear-gradient(to right, #444249, #1f2636);*/
+ background-image: url('jack_dark.png');
+
+  /* background-color: #dbdcde ; */
+  background-size: auto ;
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  margin: 230px 240px 240px 240px;
+}
+
+
+
+
+
+
+
+/*
+.nautilus-window placessidebar.sidebar {
+    background-image: url("/home/kushagra/Pictures/wall.png");
+    background-color: #275f63; 
+
+    border-radius: 13px;
+    margin-right: 6px;
+     background-image: linear-gradient(to right, #275f63,#275f63); 
+    background-size: 548px 548px 148px 148px auto;
+
+    box-shadow: inset 0 4px 54px #492a2a;
+}
+*/
+
+
+
+.nautilus-window headerbar {
+  background-image: linear-gradient(to right, #bc435d, #bc435d);
+/*
+  background-size: 248px auto;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  padding-left: 54px;
+  box-shadow: inset 0 1px rgba(219, 220, 222, 0.1);*/
+  color : #ffffff;  
+}
+
+
+  /*ENTIRE HEADER BAR */
+
+
+  
+    .nautilus-window headerbar .path-bar-box {
+    background-image: linear-gradient(to bottom, #bc435d, #bc435d);
+    background-size: auto auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-radius: 6px;
+    padding-left: 22px;
+    margin-left: -140px;
+    margin-right: 500px;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1), 0 0px 0px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.12);
+    color: #ffffff;
+  }
+  
+  /*ADDRESS BAR */
+
+
+
+
+row image.sidebar-icon {
+   /* background-color: #ff0000;*/
+    color : #65a6a9;
+
+  }
+  
+  row:selected image.sidebar-icon {
+   /* background-color: #ffff00;*/
+     color : #009FC2  ;
+  }
+
+
+
+/*headerbar button:disabled:not(.suggested-action):not(.destructive-action), actionbar > revealer > box button:disabled:not(.suggested-action):not(.destructive-action):not(.server-list-button), .app-notification button:disabled, .nemo-window toolbar.primary-toolbar > toolitem > box.raised > button:disabled, .nemo-window .toolbar button:disabled,
+button.flat:disabled {
+  box-shadow: none;
+  background-color: #00ffff;
+  color: #dbdcde;
+}
+*/
+
+
+
+button.titlebutton.close {
+  background-color: #1d1e22;
+  color: #1d1e22;
+}
+
+button.titlebutton.maximize {
+  background-color: #1d1e22;
+  color: #1d1e22;
+}
+
+button.titlebutton.minimize {
+  background-color: #1d1e22;
+  color: #1d1e22;
+}
+
+button.titlebutton.minimize:hover {
+  background-color: #1d1e22;
+  color: #1d1e22;
+}
+
+
+
+
+
+.nautilus-window paned > separator {
+
+  background-size: 0px;
+
+}
+
+
+
+/* ###########   change nautilus buttons background ########### */
+/*
+headerbar button:not(.suggested-action):not(.destructive-action) {
+  background-color: #1d2021;
+  color : #ff0000;
+}
+
+
+
+
+/*             navigation buttons ##############        */
+/*
+headerbar button:not(.suggested-action):not(.destructive-action):hover,
+headerbar button:not(.suggested-action):not(.destructive-action):active {
+  background-color: #1d2021;
+  color : #1d2021;
+}
+*/
+/*
+
+headerbar button:not(.suggested-action):not(.destructive-action):disabled {
+  background-color: #1d2021;
+  color : #1d2021;
+}
+*/
+
+/*          ##############  end        ################    */
+
+
+
+
+
+/*###############  thunar ##############*/
+window.thunar toolbar#location-toolbar {
+  border-bottom: 0px solid rgba(255, 255, 255, 0.08);
+}
+/* toolbar bottom border */
+
+
+/* .thunar .view { */
+
+  /* border-left: 5px solid rgba(255, 255, 2, 0.08); */
+  /* background-color : #ff0000; */
+  /* border-bottom: 4px solid rgba(255, 255, 255, 0.08); */
+/*thunar*/
+

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Autostart Apps
+xcape -e 'Super_L=Alt_L|F1'
+libinput-gestures-setup start
+~/.config/polybar/bspwm-6.sh
+picom &
+
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+gnome-keyring-daemon &
+
+
+numlockx on
+nm-applet &
+indicator-kdeconnect &
+
+xset +fp /usr/share/fonts/local &
+xset +fp /usr/share/fonts/misc &
+xset +fp ~/.fonts &
+xset fp rehash &
+fc-cache -fv &

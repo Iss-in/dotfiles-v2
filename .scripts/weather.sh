@@ -1,0 +1,1 @@
+inxi -xxxW 26.46520,80.34980  | head -2 | awk '{ print $2 }' | sed '/^[[:space:]]*$/d'

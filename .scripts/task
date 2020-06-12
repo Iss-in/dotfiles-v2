@@ -1,0 +1,15 @@
+#!/bin/bash
+file="/home/kushy/.config/conky/old/task.conkyrc"
+
+task=$1
+if [ "$task" == "remove" ]; then
+    echo "removing task ...."
+    line="$(($2 + 143))"
+    echo $line
+    sed -i "${line}d" $file
+elif [ "$task" == "add" ]; then
+    sed -i '$ d' $file
+    echo "\${offset 70}\${voffset 50}$2" >> $file
+    echo "]];" >> $file
+fi
+
