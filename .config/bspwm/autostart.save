@@ -62,5 +62,5 @@ redshift-gtk &
 # xmodmap .xmodmap
 kitty --class dropdown &
 echo "dropdown opened"
-/home/kushy/.scripts/hideit --class '^dropdown$' --wait --direction top --steps 15 --signal &
+~/.scripts/hideit --class '^dropdown$' --wait --direction top --steps 15 --signal &
 echo "autohide enabled"

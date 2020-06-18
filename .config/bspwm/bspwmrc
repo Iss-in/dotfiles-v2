@@ -29,8 +29,8 @@ bspc config presel_feedback_color "#1ABB9B"
 #"#8F3724"
 bspc config border_width 0
 #bspc config border_radius 6
-bspc config focus_follows_pointer true
-#bspc config pointer_follows_focus true #Some keybindings automatically enable and disable this setting
+# bspc config focus_follows_pointer true
+# bspc config pointer_follows_focus true #Some keybindings automatically enable and disable this setting
 
 #Settings for manual splitting
 bspc config split_ratio         0.52
@@ -101,22 +101,24 @@ bspc rule -a Polybar state=floating layer=normal
 
 ###External rules
 ##Pseudo automatic mode: always splits focused window when opening new window
-bspc config external_rules_command /usr/bin/pseudo_automatic_mode
+# bspc config external_rules_command /usr/bin/pseudo_automatic_mode
 ##Adjust new window: splits biggest windows to keep windows about the same size
 #bspc config external_rules_command /usr/bin/adjust-new-window
-
+bspc config external_rules_command /home/kushy/.config/bspwm/scripts/vlc.sh
 ########## new rules  ###############If your files mana
 bspc rule -a kitty state=floating  rectangle=600x290+600+350
 bspc rule -a "VSCodium" desktop='focused:^2' follow=on
 bspc rule -a xpad  state=floating sticky=on  locked=on 
+bspc rule -a dropdown  state=floating sticky=on  locked=on  focus=off rectangle=1920x330+0+0 
+
 bspc rule -a Pavucontrol state=floating rectangle=650x380+1250+680
-bspc rule -a vlc state=floating layer=above rectangle=590x330+600+300
+bspc rule -a vlc state=floating  floating=on rectangle=590x330+600+300
 
 bspc rule -a feh state=floating layer=above
 bspc rule -a Font-manager state=floating 
 bspc rule -a Nm-connection-editor state=floating
 bspc rule -a Lxappearance state=floating
-bspc rule -a Org.gnome.Nautilus state=floating  rectangle=800x350+150+311
+# bspc rule -a Org.gnome.Nautilus state=floating  rectangle=800x350+150+311
 bspc rule -a xdman-Main state=floating
 
 
@@ -124,4 +126,4 @@ bspc rule -a xdman-Main state=floating
 killall -9 sxhkd
 sxhkd &
 ~/.config/polybar/bspwm-6.sh
-$HOME/.config/bspwm/autostart
+$HOME/.config/bspwm/autostart > /home/kushy/autostart.txt

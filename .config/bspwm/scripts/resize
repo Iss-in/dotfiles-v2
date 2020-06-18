@@ -35,6 +35,7 @@ Y1=28
 Y2=554
 
 WINDOW=$(bspwindows active)
+bspc node -t floating
 case $1 in
     1) xdotool windowmove $WINDOW $X1 $Y2
 	   xdotool windowsize $WINDOW $L2 $H2   ;;
