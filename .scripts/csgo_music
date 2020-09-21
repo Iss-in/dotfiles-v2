@@ -1,0 +1,45 @@
+#!/bin/bash
+
+
+csgopath="/home/kushy/.steam/steam/steamapps/common/Counter-Strike Global Offensive"
+
+musicpath="/home/kushy/Music/csgo"
+
+
+cd "$csgopath/csgo/cfg"
+
+
+touch playsound.cfg
+
+echo "bind v music_on" > playsound.cfg
+
+echo "alias music_on \"voice_inputfromfile 1;+voicerecord; voice_loopback 1; bind v music_off\"" >> playsound.cfg
+
+echo "alias music_off \"voice_inputfromfile 0;-voicerecord; voice_loopback 0; bind v music_on\"" >> playsound.cfg
+
+echo "echo Press V to play music" >> playsound.cfg
+
+
+cd "$musicpath"
+
+
+count=0
+
+name=$f
+
+
+select f in *
+
+do
+
+ffmpeg -i "$f" -acodec pcm_s16le -ar 22050 -ac 1 -flags +bitexact voice_input.wav -y
+
+cp voice_input.wav "$csgopath"
+
+rm voice_input.wav
+
+echo loaded $f
+
+exit
+
+done

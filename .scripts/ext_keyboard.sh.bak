@@ -1,0 +1,34 @@
+#! /bin/sh
+
+# Path to lock file
+lock="/tmp/keyboard.lock"
+if [ -f $lock ]; then
+	exit 1
+fi
+echo "locked" > $lock
+
+if [[ $(pgrep -c "$0" ) -gt 1 ]]; then exit ;fi
+# env >>/tmp/test.log
+# file "/sys${DEVPATH}" >>/tmp/test.log
+
+# if [ "${ACTION}" = add -a -d "/sys${DEVPATH}" ]; then
+# echo "add ${DEVPATH}" >>/tmp/test.log
+# fi
+
+export DISPLAY=:0
+export XAUTHORITY=/home/kushy/.Xauthority
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+# set -x
+# xhost local:kushy
+
+echo "script executed again" >> /home/kushy/tmp
+# sleep 3
+killall -9 xcape
+while pgrep -u $UID -x xcape >/dev/null; do sleep 0.5; done
+/usr/bin/xmodmap /home/kushy/.xmodmap
+/usr/bin/xcape -e "Super_R=Alt_L|F2" 
+/usr/bin/xcape -e "Super_L=Alt_L|F1"  
+sudo -u kushy DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus /usr/local/bin/dunstify   -u normal "Ext keyboard connected" "is it working ?"
+rm $lock
+exit 1    

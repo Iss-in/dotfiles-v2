@@ -37,6 +37,7 @@
 	arrow-circle-right	f0a9
 	arrow-circle-up	f0aa
 	arrow-down	f063
+	dropdown	f063
 	arrow-left	f060
 	arrow-right	f061
 	arrow-up	f062
@@ -495,6 +496,7 @@
 	kaaba	f66b
 	key	f084
 	keyboard	f11c
+       onboard        f11c
 	khanda	f66d
 	kiss	f596
 	kiss-beam	f597
@@ -1271,8 +1273,9 @@
 	fedex	f797
 	fedora	f798
 	figma	f799
-%{F#ff3f42}龜%{F-} firefox	f269
-龜	firefox-browser	f907
+%{F#ff3f42}%{F-} firefox	f269
+%{F#ff3f42}%{F-} MainThread f269
+ firefox-browser	f269
 	first-order	f2b0
 	first-order-alt	f50a
 	firstdraft	f3a1

@@ -1,0 +1,48 @@
+#!/bin/bash
+verbose='false'
+timer=0
+notif=""
+while getopts ':s:m:h:n:v' flag; do
+  case "${flag}" in
+    s)  seconds="${OPTARG}" 
+        timer=$(( timer + seconds )) 
+	      ;;
+    m) minutes="${OPTARG}" 
+				timer=$(( timer + minutes * 60 )) ;;
+    h) hours="${OPTARG}"
+				timer=$(( timer + hours * 3600 )) ;;
+    n) notif="${OPTARG}" ;;
+    v) verbose='true' ;;
+    *) error "Unexpected option ${flag}" ;;
+  esac
+done
+# echo $timer
+# hours=$(( timer / 3600 ))
+# timer=$(( timer % 3600 ))
+# minutes=$(( timer / 60 ))
+# timer=$(( timer % 60 ))
+# t_hours $hours
+# t_minutes $minutes
+# t_seconds $timer 
+while [[ $timer -gt 0 ]]
+do
+  echo $timer
+  #remaining=$(( timer - i ))
+  #minutes=$(( timer / 60 ))
+  hours=$(( timer / 3600 ))
+  if [[ $timer -gt 120  ]];then
+    minutes=$(( timer / 60 ))
+    dunstify "$minutes minute left" "$notif" -r 201 -a timer
+    timer=$(( timer / 2 ))
+    sleep $timer
+  elif [[ $timer -gt 60  ]];then
+    dunstify "1 minute  left"  "$notif" -r 201 -a timer
+    sleep $(( timer - 60 ))
+    timer=60
+  else
+    dunstify "$timer seconds left"  "$notif" -r 201 -a timer
+    timer=$(( timer - 1 ))
+    sleep 1
+    #echo $remaining
+  fi
+done

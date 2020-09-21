@@ -1,4 +1,5 @@
 #!/bin/bash
+killall -9 dunst
 rofi_command="rofi -theme ~/.config/rofi/themes/powermenu.rasi"
 n30f ~/.config/rofi/images/powermenu_dark.png -x 1828 -y 330 &
 ### Options ###

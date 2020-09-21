@@ -1,0 +1,40 @@
+#!/bin/bash
+export DISPLAY=:0
+export XAUTHORITY=/home/kushy/.Xauthority
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+POWERSUPPLY="/sys/class/power_supply/BAT0/status" # could be different on your system!
+TOO_LOW=20 # how low is too low?
+NOT_CHARGING="Discharging"
+ICON="battery-low" # eye candy
+HIBERNATE=10 
+
+BATTERY_LEVEL=$(acpi -b | grep -v "information unavailable" | grep -P -o '[0-9]+(?=%)')
+STATUS=$(cat $POWERSUPPLY)
+
+
+if [ $BATTERY_LEVEL -le $HIBERNATE -a $STATUS = $NOT_CHARGING ]
+then
+    /usr/local/bin/dunstify -u critical -i "$ICON" -r 404  "Battery low" "Connect Power or System will hibernate in 1 minute"
+    sleep 60
+    STATUS=$(cat $POWERSUPPLY)  
+    if [ $STATUS = $NOT_CHARGING ]
+    then
+        systemctl hibernate
+    else
+        /usr/local/bin/dunstify -u critical -a "$ICON" -r 404 "Battery charging Now"
+    fi
+fi
+
+if [ $BATTERY_LEVEL -le $TOO_LOW -a $STATUS = $NOT_CHARGING ]
+then
+    /usr/local/bin/dunstify -u critical -a "$ICON" -r 404  "Battery level is ${BATTERY_LEVEL}%!"
+fi
+
+
+
+
+
+
+# echo `date` >> /tmp/6
+# /usr/bin/notify-send "timer" "ran"
+exit 0

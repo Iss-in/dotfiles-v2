@@ -1,2 +1,164 @@
-hideIt.sh --name '^drop-down-terminal$' --toggle &
+#!/bin/zsh
+zmodload zsh/mathfunc
+width=800
+height=350
+posx_i=0
+posy_i=0
 
+
+function show  {
+    wid=$1
+    posx_f=$2
+    posy_f=$3
+    speed=$4
+    IFS=',' read posx_i posy_i <<< $(xdotool getwindowgeometry $wid | awk '/Position/ {print $2}') 
+    echo $wid , $posy_i to $posy_f and $posx_i to $posx_f
+    itr=-1
+    if [[ posy_f -ge posy_i ]] ; then
+        echo window with wid $wid going down
+        # xdotool windowmove $wid $posx_f $posy_f
+        div=$(( (posy_f-posy_i)/15 ))
+        while [[ $posy_i -le $posy_f ]];do
+            posy_i=$((posy_i+div))
+            xdotool windowmove $wid $posx_f $posy_i
+            sleep 0.005
+        done
+    else
+        echo window with wid $wid going up
+        # xdotool windowmove $wid $posx_f $posy_f
+        div=$(( (posy_i-posy_f)/15 ))
+        while [[ $posy_i -ge $posy_f ]];do
+            posy_i=$((posy_i-div))
+            xdotool windowmove $wid $posx_f $posy_i
+            sleep 0.005
+        done
+        # for ((i=$posy_i;i>=posy_f;)); do
+        #     xdotool windowmove $wid $posx_f $i
+        #     i=$((i-speed))
+        #     echo $i
+        # done
+    fi
+
+}
+
+
+function switch  {
+    # echo $wid
+
+    lock=/tmp/dropdown.lock
+    wid_lock=/tmp/locker.lock
+    wid=$(cat /tmp/wid_dropdown.lock)
+
+    if [ ! -f $wid_lock ];then
+        echo "dropdown not running, starting it now"
+        launch
+        echo "running" > $wid_lock
+        exit 1
+    fi
+
+    if [ ! -f $lock ]; then
+        echo "dummy" > $lock
+	    old_wid=$(xdotool getwindowfocus)
+        current_desktop=$(bspc query -D -d focused --names)
+        # xdotool windowmove $wid 0 0
+        xdotool windowactivate $wid
+        show $wid 0 28 5
+
+        xdotool mousemove 100 100
+	    while [ -f $lock ]
+        do
+            # echo last window was $(xdotool getwindowname $(bspwindows) )
+            sleep 0.1
+        done
+        # /home/kushy/.scripts/hideit --class '^dropdown$' --toggle
+        # xdotool windowmove $wid 0 -$height
+        show $wid 0 -$((height+20)) 30
+        sleep 0.1
+        if [ $(bspc query -D -d focused --names) -eq $current_desktop ]; then
+            xdotool windowactivate $old_wid
+        fi
+    else
+        rm $lock
+    fi
+    exit 1
+}
+
+function launch  {
+    rm /tmp/dropdown.lock
+    if [  ! $(xdotool search --class "dropdown") ]; then
+            kitty --class dropdown &
+    fi
+    while [ ! $(xdotool search --class "dropdown") ]
+    do
+        sleep 0.1
+    done
+    sleep 2
+    wid=$(xdotool search --class "dropdown")
+    while [ ! $wid ]
+    do
+	    wid=$(xdotool search --class "dropdown")
+        sleep 0.4
+    done
+
+    echo "found the window with wid" $wid
+    echo $wid > /tmp/wid_dropdown.lock
+    xdotool windowmove $wid 0 -$height
+    xdotool windowsize $wid $width $height
+}
+
+
+
+
+
+function gravity {
+    wid=$1
+    IFS=',' read posx_i posy_i <<< $(xdotool getwindowgeometry $wid | awk '/Position/ {print $2}')
+    IFS='x' read width height <<< $(xdotool getwindowgeometry $wid| awk '/Geometry/ {print $2}')
+    gravity=10
+    velocity_i=0 
+    elasticity=0.9
+    time=0
+
+    factor=$(( (posy_f-posy_i)/10 ))
+    for ((y=$posy_i;y<=$((1080-height));)); do
+        xdotool windowmove $wid $posx_i $y
+        y=$((posy_i+gravity*time*time/2))
+        time=$((time+0.07))
+    done
+
+    velocity_f_drop=$(( gravity*time ))
+    velocity_f_bounce=$(( velocity_f_drop*elasticity ))
+    time_f=$((velocity_f_bounce/gravity))
+    time=0
+
+    for ((time=0;time<=time_f;)); do
+        y=$((1080-height-velocity_f_bounce*time+gravity*time*time/2))
+        xdotool windowmove $wid $posx_i $y
+        time=$((time+0.07))
+    done
+    echo $y vs $((1080-height)) 
+    while [[ $y -ge $((1060-height)) ]];do
+        echo "limit reached"
+        sleep 5
+        IFS=',' read posx_i y <<< $(xdotool getwindowgeometry $wid | awk '/Position/ {print $2}')
+    done
+    gravity $wid
+
+}
+
+# show $1 $2 $3
+# gravity $1
+
+switch
+# if [[ $1 -eq 1 ]]; then
+#     launch
+# else
+#     switch
+# fi
+# fun
+# echo $wid
+# /home/kushy/.scripts/hideit --class '^dropdown$' --toggle
+# xdotool windowactivate $wid
+# xdotool keydown alt key s
+# echo "should this wok"
+#  launch;

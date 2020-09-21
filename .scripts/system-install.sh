@@ -3,7 +3,7 @@ clear
 
 install () {
 
-    sudo -u $SUDO_USER  /usr/bin/yay -S zsh kitty vscodium-bin vlc conky-cairo brave-bin fontforge-git  \
+ /usr/bin/yay -S zsh kitty vscodium-bin vlc conky-cairo brave-bin fontforge-git  \
         font-manager lxappearance gcalcli genius-spicetify-git indicator-kdeconnect-git \
          kunst-git libinput-gestures n30f-git picom-ibhagwan-git viewnior xorg-xrandr gvfs-gphoto2 gvfs-mtp \
         polybar siji-git skippy-xd-git spicetify-cli spotify themix-full-git android-tools firefox \
@@ -52,7 +52,7 @@ install () {
 
 bluetooth () {
     cp /etc/pulse/default.pa /etc/pulse/default.pa.bak
-    sudo -u $SUDO_USER yay -S pulseaudio pulseaudio-bluetooth pulseaudio-alsa bluez bluez-utils 
+    sudo -u $SUDO_USER yay -S alsa-utils alsa-firmware pulseaudio pulseaudio-bluetooth pulseaudio-alsa bluez bluez-utils pavolume-git
     echo -e "\nload-module module-switch-on-connect" >> /etc/pulse/default.pa 
     sed -i "s|#AutoEnable=false|AutoEnable=true|" "/etc/bluetooth/main.conf" 
     sed -i "s|#DiscoverableTimeout = 0|DiscoverableTimeout = 0|" "/etc/bluetooth/main.conf" 
@@ -72,6 +72,11 @@ install_zsh () {
     sudo -u $SUDO_USER  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/$user/.oh-my-zsh/plugins/zsh-syntax-highlighting
     sudo -u $SUDO_USER  git clone https://github.com/zsh-users/zsh-autosuggestions.git /home/$user/.oh-my-zsh/plugins/zsh-autosuggestions
     ## download .zsh from your git 
+    echo "unmuting devices"
+    amixer sset Master unmute
+    amixer sset Speaker unmute
+    amixer sset Headphone unmute
+
 }
 
 autologin () {
@@ -112,7 +117,7 @@ create_swap () {
         delete_swap
     fi
     echo "creating a new swapfile..."
-    fallocate -l 8G /swapfile
+    dd if=/dev/zero of=/swapfile bs=1M count=8192 status=progress
     chmod 600 /swapfile
     mkswap /swapfile
     swapon /swapfile
@@ -122,110 +127,137 @@ create_swap () {
 
 hibernate () {
     partition="\/dev\/$(lsblk | awk '/part [/]$/{print $1}'  | sed 's/^.\{2\}//')"
-    resume_offset="$(filefrag -v /swapfile | awk '/0..       0:/ {print $4}' | sed 's/.\{2\}$//')"
-    if ! grep -q "resume="  /etc/default/grub
-    then 
-        sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/\"$/ resume=${partition}\"/" '/etc/default/grub'
-        echo "added boot partition address"
-    fi
-    if ! grep -q "resume_offset="  /etc/default/grub
-    then 
-        sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/\"$/ resume_offset=${resume_offset}\"/" '/etc/default/grub'
-        echo "added boot partition location"
-    fi
+    grub="/etc/default/grub"
+    resume_offset="$(filefrag -v /swapfile | awk 'NR == 4 {print $4}' | sed 's/.\{2\}$//')"
+    echo $resume_offset > /sys/power/resume_offset
+    sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/ resume=[\/][a-z]*[\/][a-z]*[0-9]*//" "$grub"
+    sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/\"$/ resume=${partition}\"/" "$grub"
+    echo "added boot partition address"
+
+    sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/ resume_offset=[[:digit:]]*//" "$grub"
+    sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/\"$/ resume_offset=${resume_offset}\"/" "$grub"
+    echo "added boot partition location"
+
     if ! grep -q "resume"  /etc/mkinitcpio.conf
     then 
         sed -i "/^HOOKS/s/)$/ resume)/" "mkinitcpio.conf" "/etc/mkinitcpio.conf"
-        echo "added resume HOOK"
+        echo "adding resume HOOK"
+        mkinitcpio -P
     fi
     update-grub
-    mkinitcpio -P
+    echo "blacklist nouveau" > /etc/modprobe.d/modprobe.conf 
+
 }
 
 
 echo "making  a full update before proceding"
 sudo -u $SUDO_USER yay -Syuu
-read -p "$(echo -e '\nCreate swap file? y/N (default:N)') " choice
-if [[ $choice == "y" ]];then
-    create_swap
-else
-    echo "skipping swap creation, moving onto next....."
-fi
+# read -p "$(echo -e '\nCreate swap file? y/N (default:N)') " choice
+# if [[ $choice == "y" ]];then
+#     create_swap
+# else
+#     echo "skipping swap creation, moving onto next....."
+# fi
 
-read -p "$(echo -e '\nEnable Hibernate? y/N (default:N)') " choice
-if [[ $choice == "y" ]];then
-    hibernate
-else
-    echo "skipping hibernate, moving onto next....."
-fi
-
-
-read -p "$(echo -e '\nInstall User applications? y/N (default:N)') " choice
-if [[ $choice == "y" ]];then
-    install
-else
-    echo "skipping installation of user apps, moving onto next....."
-fi
-
-read -p "$(echo -e '\nInstall Oh-My-Zsh? y/N (default:N)') " choice
-if [[ $choice == "y" ]];then
-    install_zsh
-else
-    echo "skipping installation of user apps, moving onto next....."
-fi
+# read -p "$(echo -e '\nEnable Hibernate? y/N (default:N)') " choice
+# if [[ $choice == "y" ]];then
+#     hibernate
+# else
+#     echo "skipping hibernate, moving onto next....."
+# fi
 
 
-read -p "$(echo -e '\nEnable Bluetooth? y/N (default:N)') " choice
-if [[ $choice == "y" ]];then
-    bluetooth
-else
-    echo "skipping bluetooth installation , moving onto next....."
-fi
+# read -p "$(echo -e '\nInstall User applications? y/N (default:N)') " choice
+# if [[ $choice == "y" ]];then
+#     install
+# else
+#     echo "skipping installation of user apps, moving onto next....."
+# fi
+
+# read -p "$(echo -e '\nInstall Oh-My-Zsh? y/N (default:N)') " choice
+# if [[ $choice == "y" ]];then
+#     install_zsh
+# else
+#     echo "skipping installation of user apps, moving onto next....."
+# fi
 
 
-read -p "$(echo -e '\nEnable autologin? y/N (default:N)') " choice
-if [[ $choice == "y" ]];then
-    autologin
-else
-    echo "skipping bluetooth installation , moving onto next....."
-fi
+# read -p "$(echo -e '\nEnable Bluetooth? y/N (default:N)') " choice
+# if [[ $choice == "y" ]];then
+#     bluetooth
+# else
+#     echo "skipping bluetooth installation , moving onto next....."
+# fi
 
 
-read -p "$(echo -e '\nEnable silent boot? y/N (default:N)') " choice
-if [[ $choice == "y" ]];then
-    silent_boot
-else
-    echo "skipping bluetooth installation , moving onto next....."
-fi
+# read -p "$(echo -e '\nEnable autologin? y/N (default:N)') " choice
+# if [[ $choice == "y" ]];then
+#     autologin
+# else
+#     echo "skipping bluetooth installation , moving onto next....."
+# fi
+
+
+# read -p "$(echo -e '\nEnable silent boot? y/N (default:N)') " choice
+# if [[ $choice == "y" ]];then
+#     silent_boot
+# else
+#     echo "skipping bluetooth installation , moving onto next....."
+# fi
 
 
 
 
  
-read -p "$(echo -e '\nEnable Touchpad tap? y/N (default:N)') " choice
-if [[ $choice == "y" ]];then
-    sudo -u $SUDO_USER yay -S xf86-input-libinput
-    echo "enabling touchpad tap..."
-    echo 'Section "InputClass"
-        Identifier "touchpad"
-        Driver "libinput"
-        MatchIsTouchpad "on"
-        Option "Tapping" "on"
-        Option "TappingButtonMap" "lmr"
-    EndSection' > /etc/X11/xorg.conf.d/30-touchpad.conf 
-fi
+# read -p "$(echo -e '\nEnable Touchpad tap? y/N (default:N)') " choice
+# if [[ $choice == "y" ]];then
+#     sudo -u $SUDO_USER yay -S xf86-input-libinput
+#     echo "enabling touchpad tap..."
+#     echo 'Section "InputClass"
+#         Identifier "touchpad"
+#         Driver "libinput"
+#         MatchIsTouchpad "on"
+#         Option "Tapping" "on"
+#         Option "TappingButtonMap" "lmr"
+#     EndSection' > /etc/X11/xorg.conf.d/30-touchpad.conf 
+# fi
 
 #### setting defaulr browser  #########
 # sudo -u $SUDO_USER xdg-mime default firefox.desktop x-scheme-handler/http
 # sudo -u $SUDO_USER xdg-mime default firefox.desktop x-scheme-handler/https  
 
-###############firefox mods############
-#  browser.tabs.closeWindowWithLastTab false
-#  toolkit.legacyUserProfileCustomizations.stylesheets true
-#  svg.context-properties.content.enabled true
-#  browser.urlbar.update false
-#  edit search weight results
-#  browser.urlbar.openViewOnFocus false --experiment
- ##############################
+main () {
+    read -p "$(echo -e '\n press 
+    1) to Enable Swap file and Hibernate 
+    2) to Enable bluetooth services 
+    3) to Enable silent boot and plymouth 
+    4) to install oh-my-zsh 
+    5) to Enable Touchpad tap 
+    6) to Install default user apps 
+    0) to exit
+    ')" choice
+    case $choice in
+        0)  echo "exiting.... "
+            exit 1 ;;
+        1)  delete_swap 
+            create_swap
+            hibernate
+            main ;;
+        2) echo 2
+        ;;
+        3) echo 3
+        ;;
+        4) echo 4
+        ;;
+        5) echo 5
+        ;;
+        6) echo 6
+        ;;
+        *) main ;;
+        default) echo -n "unknown"
+        ;;
+    esac
 
+}
+main
 

@@ -1,0 +1,56 @@
+#!/bin/bash
+function on () {
+    dunstify "turning game mode on" -a game_mode -r 1331
+    killall -9 picom
+    light -S 100
+    if [ -z  "$(pgrep -u $UID -x steam)" ]
+    then
+        steam -silent &>/dev/null & 
+    fi
+
+    if [ -z  "$(ps -aux | grep sxhkdrc_game_mode | grep -v grep )" ]
+    then 
+        killall -9 sxhkd
+        while pgrep -u $UID -x sxhkd >/dev/null; do sleep 1; done
+        sxhkd -c /home/kushy/.config/sxhkd/sxhkdrc_game_mode  &>/dev/null &
+    fi
+}
+
+function off () {
+    picom &
+    dunstify "turning game mode off" -a game_mode -r 1331
+    light -S 70
+    if [ -z "$(pgrep -u $UID -x steam)" ] 
+    then
+        echo "steam not running"
+    # else
+    #     steam -shutdown  &>/dev/null &
+    fi
+
+    if [ -z "$(ps -aux | grep sxhkdrc_game_mode | grep -v grep )" ]
+    then
+        echo "no alternate keybind"
+    else 
+        killall -9 sxhkd
+        while pgrep -u $UID -x sxhkd >/dev/null; do sleep 1; done
+        sxhkd  &>/dev/null &
+    fi
+}
+
+
+lock=/tmp/game_mode.lock
+if [ ! -f $lock ];then
+    echo "script not running" > $lock
+    mode=$1
+    if [[ $mode == "on" ]];then
+        on
+    elif [[ $mode == "off" ]];then
+        off
+    fi
+    rm $lock
+else
+    echo "script running"
+    exit 1
+fi
+
+exit 1
