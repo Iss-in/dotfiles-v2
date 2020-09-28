@@ -5,5 +5,6 @@ instance=$3
 title=$(xwininfo -id $wid | sed -n '2p' | cut -d\" -f2)
 echo $title
 if [[ $instance = "vlc" && $title = "vlc" ]]; then
+    notify-send "hello" "vlc"
     echo layer=above border=off
 fi

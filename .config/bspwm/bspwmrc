@@ -1,5 +1,5 @@
 #! /bin/sh
-gap=0
+gap=10
 PANEL_HEIGHT=25
 export gap
 export PANEL_HEIGHT
@@ -11,7 +11,7 @@ bspc config right_padding 0
 bspc config bottom_padding 0
 
 #Various settings
-bspc config gapless_monocle     false #Default setup uses negative padding, and gapless monocle looks really weird like that
+bspc config gapless_monocle     true #Default setup uses negative padding, and gapless monocle looks really weird like that
 bspc config borderless_monocle  true
 bspc config single_monocle true
 #bspc config paddingless_monocle false
@@ -22,14 +22,15 @@ bspc config remove_unplugged_monitors true
 ## Honor size hints: do not make windows smaller than they wish to be
 #bspc config honor_size_hints true 
 ##Color settings
-bspc config focused_border_color "#31404d"
+bspc config focused_border_color "#252b30"
 bspc config normal_border_color "#31404d"
+
 #"#000000"
 bspc config presel_feedback_color "#1ABB9B"
 #"#8F3724"
-bspc config border_width 0
+bspc config border_width 5
 #bspc config border_radius 6
-# bspc config focus_follows_pointer true
+bspc config focus_follows_pointer true
 # bspc config pointer_follows_focus true #Some keybindings automatically enable and disable this setting
 
 #Settings for manual splitting
@@ -39,12 +40,11 @@ bspc config split_ratio         0.52
 #bspc monitor -d One Two Three Four Five Six Seven Eight Nine Ten
 #bspc monitor -d I II III IV V VI VII VIII IX X
 #bspc monitor -d • • • • • • • • • •
-bspc monitor -d 1 2 3 4 5 6
+bspc monitor -d 1 2 3 4 5
 
 ###This creates and names desktops for multiple monitors.
 # workspaces_multimonitor &
 bspc rule -r *:*
-
 bspc rule -a screenkey --unmanage
 bspc rule -a gcolor2 state=floating center=true
 bspc rule -a lxappearance state=floating center=true
@@ -69,7 +69,8 @@ bspc rule -a wbar layer=above
 bspc rule -a dockbarx layer=above
 bspc rule -a google-chrome-unstable private=on
 bspc rule -a google-chrome-stable private=9
-bspc rule -a firefox private=on
+# bspc rule -a firefox private=on
+bspc rule -a firefox:Toolkit state=floating layer=above
 bspc rule -a midori private=on
 bspc rule -a gnome-pie border=off manage=off
 bspc rule -a wpa_gui state=pseudo_tiled
@@ -103,16 +104,20 @@ bspc rule -a Polybar state=floating layer=normal
 ##Pseudo automatic mode: always splits focused window when opening new window
 # bspc config external_rules_command /usr/bin/pseudo_automatic_mode
 ##Adjust new window: splits biggest windows to keep windows about the same size
-#bspc config external_rules_command /usr/bin/adjust-new-window
-bspc config external_rules_command /home/kushy/.config/bspwm/scripts/vlc.sh
+
+# bspc config external_rules_command  /home/kushy/.config/bspwm/scripts/bspwm-rules
+# bspc config external_rules_command /home/kushy/.config/bspwm/scripts/vlc.sh
+
+bspc config external_rules_command /home/kushy//home/kushy/.config/bspwm/scripts/check.sh
 ########## new rules  ###############If your files mana
 bspc rule -a kitty state=floating  rectangle=600x290+600+350
+bspc rule -a Alacritty state=floating  rectangle=600x290+600+350
 bspc rule -a "VSCodium" desktop='focused:^2' follow=on
 bspc rule -a xpad  state=floating sticky=on  locked=on 
 bspc rule -a dropdown  state=floating sticky=on  locked=on  focus=off rectangle=1920x330+0+0 
 
 bspc rule -a Pavucontrol state=floating rectangle=650x380+1250+680
-bspc rule -a vlc state=floating  floating=on rectangle=590x330+600+300
+#bspc rule -a vlc state=floating  floating=on rectangle=590x330+600+300
 
 bspc rule -a feh state=floating layer=above
 bspc rule -a Font-manager state=floating 
@@ -126,4 +131,7 @@ bspc rule -a xdman-Main state=floating
 killall -9 sxhkd
 sxhkd &
 ~/.config/polybar/bspwm-6.sh
-$HOME/.config/bspwm/autostart > /home/kushy/autostart.txt
+ $HOME/.config/bspwm/autostart
+
+# $HOME/.scripts/nautilus_scratchpad
+# wmname LG3D # for java applications
