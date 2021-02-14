@@ -17,8 +17,10 @@ alignment = left
 vertical_alignment = top
 corner_radius = 6
 
-frame_width = 6
-outer_frame_width = 3
+frame_width = 6   # Total Frame WIdth
+outer_frame_width = 3  # Outer Frame Width, set to zero to have a single border
+# So inner_frame_width will be  frame_width - outer_frame_width
+
 separator_height = 6
 
 frame_color = "#bc435d"
