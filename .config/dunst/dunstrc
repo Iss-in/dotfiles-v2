@@ -1,35 +1,52 @@
-
 [global]
 monitor = 0
 follow = mouse
-geometry = "335x30-5+40"
+geometry = "280x30-10+10"
 indicate_hidden = yes
-shrink = no
-separator_height = 2
-separator_color = frame
-padding = 15
-horizontal_padding = 15
-frame_width = 4
+shrink = yes
+padding = 10
+horizontal_padding = 5
+
 sort = no
-idle_threshold = 120
-font = Rounded Mplus 1C 10
+idle_threshold = 420
+font = Roboto Medium 10
 line_height = 4xz5
 markup = full
 #format = %s\n%b
 alignment = left
 vertical_alignment = top
 corner_radius = 6
-frame_color = "#bc435d"
 
-format="<span foreground='#ffb86c'><b>%s</b></span>\n<span  font='Rounded Mplus 1C  Bold 8'>%b</span>"
-show_age_threshold = 60
+frame_width = 6
+outer_frame_width = 3
+separator_height = 6
+
+frame_color = "#bc435d"
+outer_frame_color = "#ffff00"
+separator_color = "#ff000000"
+inner_border_autocolor = false
+
+
+#format="<span  font='Roboto Black 12' ><b>%s</b></span><span color='#a1a3ae' font='Roboto Medium 11'>\n%b</span>"
+format="<span><b>%s</b></span><span  font='Ubuntu Bold 9'>\n%b</span>"
+
+
+
+progress_bar = true
+progress_bar_height = 3
+progress_bar_frame_width = 1
+progress_bar_min_width = 150
+progress_bar_max_width = 300
+
+
+show_age_threshold = 460
 word_wrap = yes
 ignore_newline = no
 stack_duplicates = false
 hide_duplicate_count = yes
 show_indicators = no
 icon_position = left
-max_icon_size = 48
+max_icon_size = 36
 sticky_history = yes
 history_length = 20
 browser = /usr/bin/firefox -new-tab
@@ -37,43 +54,74 @@ always_run_script = true
 title = Dunst
 class = Dunst
 transparency = 0
-icon_path = /home/kushy/.icons/baloons/actions/scalable
+icon_path = /home/kushy/.icons/custom-dark:/home/kushy/.icons/custom-dark/scalable/apps:/home/kushy/.icons/baloons/actions/24:/home/kushy/.icons/We10X-special/scalable/apps:/home/kushy/.icons/oomox-baloon/apps/scalable
 
-
-
-[brightness]
-    summary = "Brightness*"
-    format="<span foreground='#75B5AA'><b>%s</b></span><span  font='Rounded Mplus 1C  Bold 9'> %b%</span>"
-    vertical_alignment = bottom
+titlebar = true
 
 [screenshot]
     summary = "Screenshot"
     format="<span foreground='#75B5AA'><b>%s</b></span><span  font='Rounded Mplus 1C  Bold 9'> %b</span>"
     vertical_alignment = bottom
 
+[Brightness]
+    summary = "light1"
+    format="<span foreground='#75B5AA'><b>%b</b></span>"
+    script = /home/kushy/notif.sh
 
+
+[BSPWM]
+    appname = "archlinux"
+    format="<span  font='Roboto Medium 10' ><b>%s</b></span><span  font='Roboto Medium 11'>\n%b</span>"
+    script = /home/kushy/.scripts/notif.sh  
+
+[Power]
+    appname = "battery"
+    format="<span  font='Roboto Medium 10' ><b>%s</b></span><span  font='Roboto Medium 11'>\n%b</span>"
+    script = /home/kushy/.scripts/notif.sh  
+
+
+[Calendar]
+    appname = "Calendar"
+    format="<span  font='Roboto Medium 10' ><b>%s</b></span><span  font='Roboto Medium 11'>%b</span>"
+    script = /home/kushy/.scripts/notif.sh  
+
+[One_liner]
+    body = ""
+    format="<span foreground='#000'><b>%s </b></span>"
 
 
 [shortcuts]
 close = ctrl+shift+space
 close_all = ctrl+shift+space
 history = ctrl+grave
-context = shift+grave
+context = ctrl+shift+period
+
+mouse_left_click = do_action, close_current 
+mouse_middle_click = close_current
+mouse_right_click = close_all
+
+
 
 [urgency_low]
-timeout = 10
-background = "#1d2021"
-foreground = "#ffffff"
-frame_color = "#bc435d"
+timeout = 5
+background = "#fff"
+foreground = "#000"
+frame_color = "#444444"
+outer_frame_color = "#fff"
+
 
 [urgency_normal]
-timeout = 20
-background = "#1d2021"
-foreground = "#ffffff"
-frame_color = "#bc435d"
+timeout = 40
+background = "#fff"
+foreground = "#000"
+frame_color = "#e4682e"
+highlight = "#00ffff"
+outer_frame_color = "#00ffff"
 
 [urgency_critical]
-timeout = 10
-background = "#1d2021"
-foreground = "#ffffff"
-frame_color = "#EC407A"
+timeout = 50
+background = "#fff"
+foreground = "#000"
+frame_color = "#ff0000"
+outer_frame_color = "#ff0000"
+
