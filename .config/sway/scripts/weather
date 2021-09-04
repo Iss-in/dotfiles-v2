@@ -1,0 +1,6 @@
+#!/bin/bash
+out=$(curl "wttr.in/Kanpur?format=3" | sed "s| ||g;s|^.*:||;s|+|<span font='Noto Sans Display Bold 10'>  |;s|$|</span>|")
+full=$(curl "wttr.in/Kanpur?format=4" | sed "s| |\\\n|g" )
+# notify-send "Weather" "info updated" -i weather -u low
+echo "{\"text\":\""${out}"\",\"alt\":\"VPN\",\"tooltip\":\""${full}"\",\"class\":\"weather\"}"
+exit 0

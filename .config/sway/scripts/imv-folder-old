@@ -1,0 +1,17 @@
+#!/bin/sh
+image="$1"
+dir=$(dirname $image)
+cd $dir
+# /usr/bin/ls -tp "$(dirname "$image")" | grep -v /
+exec imv $(/usr/bin/ls -pc $(dirname "$image") | grep -v /) -n "$image"
+
+# image="$1"
+# declare -a ARGS order
+# readarray -t -d '' order < <(printf '%s\0' "$(dirname "$image")"/* | sort -z --sort=version)
+
+# for a in "${order[@]}"; do
+# 	if [ -f "$a" ]; then
+# 		ARGS+=("$a")
+# 	fi
+# done
+# exec imv "${ARGS[@]}" -n "$image"

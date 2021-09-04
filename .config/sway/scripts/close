@@ -1,0 +1,66 @@
+#!/bin/bash
+# nautilus_pid=$( cat /tmp/nautilus_scratchpad.lock | jq .pid )
+# nautilus_id=$( cat /tmp/nautilus_scratchpad.lock | jq .id )
+# # sleep 2
+
+# active_pid=$(swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true).pid')
+# active_id=$(swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true).id')
+# active_title=$(swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true).name')
+# # echo $nautilus_id $nautilus_pid $active_id $active_pid
+# if [[ $active_pid -eq $nautilus_pid && $active_id -eq $nautilus_id ]];then
+#     # notify-send 1"nautilus"
+#     if [[ -n "`echo $active_title | grep -E 'Properties|Application'`" ]];then
+#         # notify-send "property"
+#         swaymsg kill
+#     else
+#         # notify-send "main"
+#         # swaymsg [app_id="org.gnome.Nautilus"] scratchpad show   || exec swaymsg [app_id="org.gnome.Nautilus"] move scratchpad
+#         swaymsg [pid="$active_pid"] scratchpad show   || exec swaymsg [pid="$active_pid"] move scratchpad
+
+    
+#     fi
+# else
+#     swaymsg kill 
+# fi
+
+
+#############       using list ############
+# value="$(swaymsg -t get_tree | jq -r '.. | select(.focused?).app_id')"
+# locked_apps=("firefox")
+# case "${locked_apps[@]}" in  
+#     "$value") 
+#         exit 0
+#         ;; 
+#     *)
+#         swaymsg kill
+#         ;;
+# esac
+
+########################################
+
+
+exec 99> "/tmp/close.lock"
+if ! flock -n 99  ; then
+    printf 'another instance is running\n';
+    exit 1
+ fi
+
+app="firefox"
+app_id="$(swaymsg -t get_tree 2> /dev/null  | jq -r '.. | select(.focused?).app_id')"
+firefox_windows="$(swaymsg -t get_tree 2> /dev/null | jq -r '.. | select(.app_id?).app_id' | grep $app | wc -l)"
+if [[ $app_id == "ulauncher" ]];then
+    # swaymsg kill
+    echo closed
+    exit 0
+fi
+if [[ $app_id != "$app" ]];then
+    swaymsg kill
+    echo closed
+    exit 0
+fi
+if [[ $firefox_windows -gt 1 ]];then
+    swaymsg kill
+    echo closed2
+    exit 0
+fi
+

@@ -1,0 +1,100 @@
+#!/bin/bash
+mode=$1
+WALL_PATH="$HOME/Pictures/Wallpapers"
+GTK_DARK_THEME="WhiteSur-dark-solid-blue"
+GTK_LIGHT_THEME="WhiteSur-light-blue"
+ICON_DARK_THEME="WhiteSur-dark"
+ICON_LIGHT_THEME="WhiteSur"
+# LIGHT_WALL="$WALL_PATH/img0.jpg"
+# DARK_WALL="$WALL_PATH/img19.jpg"
+
+config="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0/settings.ini"
+# pkill -9 swaybg 
+dark_theme=$(gsettings get org.gnome.desktop.interface gtk-theme | grep dark )
+psg () {
+  name=$1
+  ps -aux | grep --color=always -i $name | grep --color=always -v grep
+}
+reload_system() {
+    # stop ulauncher
+
+    # config="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0/settings.ini"
+    if [ ! -f "$config" ]; then
+        echo "no gtk3 config file"
+        exit 1;
+    fi
+
+    gnome_schema="org.gnome.desktop.interface"
+    gtk_theme="$(grep 'gtk-theme-name' "$config" | cut -d'=' -f2)"
+    icon_theme="$(grep 'gtk-icon-theme-name' "$config" | cut -d'=' -f2)"
+    cursor_theme="$(grep 'gtk-cursor-theme-name' "$config" | cut -d'=' -f2)"
+    font_name="$(grep 'gtk-font-name' "$config" | cut -d'=' -f2)"
+    gsettings set "$gnome_schema" gtk-theme "$gtk_theme"
+    # echo $"(gsettings set "$gnome_schema" gtk-theme "$gtk_theme")"
+    gsettings set "$gnome_schema" icon-theme "$icon_theme"
+    gsettings set "$gnome_schema" cursor-theme "$cursor_theme"
+    gsettings set "$gnome_schema" font-name "$font_name"
+
+    #reload ulauncher files
+    # kill -HUP $(psg "ulauncher --hide-window --no-window-shadow" | awk '{print $2}')
+    # reload dunst 
+    killall dunst
+    # killall -SIGUSR2 waybar
+}
+
+reload_gtk_icon_theme() {
+    gtk-update-icon-cache
+}
+
+dark_mode() {
+    sed -i "s|gtk-theme-name=.*|gtk-theme-name=$GTK_DARK_THEME|g" $config
+    sed -i "s|gtk-icon-theme-name=.*|gtk-icon-theme-name=$ICON_DARK_THEME|g" $config
+    sed -i 's|"theme-name.*|"theme-name": "dark"|g'  $HOME/.config/ulauncher/settings.json
+    ln -sf $HOME/.config/sway/themes/vscode.json $HOME/.config/sway/themes/colorscheme.json
+}
+
+
+light_mode() {
+    sed -i "s|gtk-theme-name=.*|gtk-theme-name=$GTK_LIGHT_THEME|g" $config
+    sed -i "s|gtk-icon-theme-name=.*|gtk-icon-theme-name=$ICON_LIGHT_THEME|g" $config
+    sed -i 's|"theme-name.*|"theme-name": "light"|g'  $HOME/.config/ulauncher/settings.json
+    ln -sf $HOME/.config/sway/themes/light.json $HOME/.config/sway/themes/colorscheme.json
+}
+
+info() {
+    if [[ ! -z $dark_theme ]];then
+        echo "{\"text\":\"\",\"alt\":\"Theme\",\"tooltip\":\"Dark mode\",\"class\":\"dark\"}"
+    else
+        echo "{\"text\":\"\",\"alt\":\"Theme\",\"tooltip\":\"Light Mode\",\"class\":\"light\"}"
+    fi
+}
+
+toggle() {
+    # pkill -9 ulauncher  
+    # rm $HOME/.config/waybar/style.css
+    if [[ ! -z $dark_theme ]];then
+        light_mode
+    else
+        dark_mode
+    fi
+    wal -f $HOME/.config/sway/themes/colorscheme.json 
+    # source ~/.cache/wal/colors.sh
+    reload_system
+}
+case $mode in
+	(dark) echo "switching to dark mode" && dark_mode;;
+	(light) light_mode;;
+    (info) info;;
+    (toggle) toggle;;
+    (reload) reload_system;;
+
+esac
+# reload_gtk_theme
+# reload_gtk_icon_theme
+# sleep 2
+# killall -9 redshift indicator-kdeconnect nm-applet 
+# redshift &
+# indicator-kdeconnect &
+# nm-applet &
+# sleep 2
+# xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" $(xdo id -n tint2)

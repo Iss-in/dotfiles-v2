@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# lock="/tmp/nautilus_scratchpad.lock"
+# launch () {
+#     killall -9 nautilus
+#     while ps -ef | grep "nautilus -w" | grep -v grep >/dev/null; do sleep 1; done
+#     nautilus -w &
+#     wid=$(xdotool search --class "Org.gnome.Nautilus" | head -1)
+#     while [ ! $wid ]
+#     do
+# 	    wid=$(xdotool search --class "Org.gnome.Nautilus" | head -1)
+#     done
+#     echo $wid > $lock
+# }
+# launch
+##############3bbspwm
+# bspc rule -a  Org.gnome.Nautilus --one-shot sticky=on hidden=on locked=on state=tiled
+# killall -9 nautilus
+# nautilus -w &
+# wid=$(bspc query -N -n .tiled | xargs -i sh -c 'bspc query  --node {} -T | grep -q Org.gnome.Nautilus && echo {}')
+# while [ ! $wid ];do
+#     echo "still checking"
+#     sleep 0.3
+#     wid=$(bspc query -N -n .tiled | xargs -i sh -c 'bspc query  --node {} -T | grep -q Org.gnome.Nautilus && echo {}')
+# done
+# echo $wid > /tmp/nautilus_scratchpad.lock
+
+##########sway
+
+killall -9 nautilus
+nautilus -w &
+# pid=''
+# while [[ -z $pid ]];do
+#     echo "still checking"
+#     sleep 0.3
+#     pid=$( ps -aux | grep "nautilus -w" | awk '{print $2}')
+# done
+# echo $pid > /tmp/nautilus_scratchpad.lock
+# echo "hide"
+status=''
+while [[ -z $(swaymsg '[app_id="org.gnome.Nautilus"]' move scratchpad) ]];do
+    status=$(swaymsg -t get_tree | grep -i "\"app_id\": \"org.gnome.Nautilus\"")
+    swaymsg '[app_id="org.gnome.Nautilus"]' move scratchpad
+done
+# swaymsg '[app_id="org.gnome.Nautilus"]' move scratchpad
+pid=$( ps -aux | grep "nautilus -w" | awk '{print $2}' | head -1)
+echo $pid
+echo $pid > /tmp/nautilus_scratchpad.lock
+
+info=$(swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true)')
+echo $info > /tmp/nautilus_scratchpad.lock
+sticky toggle
+

@@ -1,0 +1,41 @@
+#!/bin/bash
+
+
+info (){
+    val=$(dunstctl is-paused)
+    case "$val" in
+    "false")
+        echo "{\"text\":\"\",\"alt\":\"dnd off\",\"tooltip\":\"session active\",\"class\":\"off\"}"
+        ;;
+    "true")
+        echo "{\"text\":\"\",\"alt\":\"dnd on\",\"tooltip\":\" dnd on\",\"class\":\"on\"}"
+        ;;
+    esac
+}
+
+
+toggle (){ 
+    val=$(dunstctl is-paused)
+    case "$val" in
+    "false")
+        dunstctl set-paused true
+        ;;
+    "true")
+        dunstctl set-paused false
+        ;;
+    esac
+    pkill -RTMIN+3 waybar
+}
+
+
+
+exec 13> "/tmp/planner.lock"
+if ! flock -n 13  ; then
+    printf 'another instance is running\n';
+    exit 1
+ fi
+
+case "$1" in
+    "info")  info ;;         
+    "toggle") toggle ;;
+esac

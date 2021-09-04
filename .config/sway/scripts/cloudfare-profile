@@ -1,0 +1,123 @@
+#!/bin/bash
+# lockfile="/tmp/vpn.lock"
+# if [[ ! -f  $lockfile ]];then
+#     # dunstify "Recording Started" -r 688 -i none -a arch
+#     # touch $lockfile
+#     chmod 755 $lockfile > $lockfile
+# fi
+# status="$(cat $lockfile)"
+
+check (){
+    # sleep 1
+    dns="$(cat /etc/resolv.conf | grep 'nameserver' | awk '{print $2}')"
+    case "$dns" in
+        "1.1.1.1")  return 0;;
+        *)          return 1;;
+    esac
+    # pkill -RTMIN+7 waybar
+
+}
+#  
+
+
+# if [[ $1 == "status" ]];then
+#     case "$status" in
+#         "connected")    echo  #echo '{"text":"connected","alt":"VPN","tooltip":"tooltip","class":"check-vpn"}' 
+#                         ;;
+#         *)              echo  #echo '{"text":"disconnected","alt":"VPN","tooltip":"tooltip","class":"check-vpn"}' 
+#                         ;;
+#     esac
+# 	exit 0
+# fi
+# dunstify "Recording Started" -r 688 -i none -a arch
+
+# case "$status" in
+#     "connected")    pkexec wg-quick down  /home/kushy/.config/wireguard/wgcf-profile.conf
+#                     while [[ $? -eq 1 ]]
+#                     do
+#                         pkexec wg-quick up  /home/kushy/.config/wireguard/wgcf-profile.conf
+#                     done
+#                     pkexec wg-quick down  /home/kushy/.config/wireguard/wgcf-profile.conf
+#                     # pkill -RTMIN+7 waybar
+#                     echo '{"text":"loading","alt":"Recording","tooltip":"tooltip","class":"loading"}'
+#                     sleep 3
+#                     echo "disconnected" > $lockfile
+#                     pkill -RTMIN+7 waybar
+#     ;;
+#     *)              pkexec wg-quick up  /home/kushy/.config/wireguard/wgcf-profile.conf
+#                     while [[ $? -eq 1 ]]
+#                     do
+#                         pkexec wg-quick down  /home/kushy/.config/wireguard/wgcf-profile.conf
+#                     done
+#                     pkexec wg-quick yp  /home/kushy/.config/wireguard/wgcf-profile.conf
+#                     # pkill -RTMIN+7 waybar
+#                     echo '{"text":"loading","alt":"Recording","tooltip":"tooltip","class":"loading"}'
+#                     sleep 3
+#                     echo "connected" > $lockfile
+#                     pkill -RTMIN+7 waybar
+#     ;;
+# esac
+
+toggle () {
+    if check ;then
+        pkill -RTMIN+7 waybar
+        pkexec wg-quick down  /home/kushy/.config/wireguard/wgcf-profile.conf
+        pkill -RTMIN+7 waybar
+
+    else
+        pkill -RTMIN+7 waybar
+        pkexec wg-quick up  /home/kushy/.config/wireguard/wgcf-profile.conf
+        pkill -RTMIN+7 waybar
+    fi
+}
+
+on () {
+    pkexec wg-quick up  /home/kushy/.config/wireguard/wgcf-profile.conf
+    pkill -RTMIN+7 waybar
+}
+
+off () {
+    pkexec wg-quick down  /home/kushy/.config/wireguard/wgcf-profile.conf
+    pkill -RTMIN+7 waybar
+}
+
+info () {
+    # check
+    dns=$(cat /etc/resolv.conf  | grep nameserver | head -1 | sed 's|nameserver||')
+    while [[ ! -z "$(pgrep wg-quick)" ]]
+    do
+        echo changing
+        exit 0
+    done
+    if check ;then
+        echo "{\"text\":\"\",\"alt\":\"VPN\",\"tooltip\":\""${dns}"\",\"class\":\"active\"}"
+    else
+        echo "{\"text\":\"\",\"alt\":\"VPN\",\"tooltip\":\""${dns}"\",\"class\":\"inactive\"}"
+    fi 
+}
+
+net=1
+# wget -q --spider http://google.com
+# if [ ! $? -eq 0 ]; then
+#     echo "{'Not Connected'}"
+#     exit 1
+# fi
+exec 9> "/tmp/vpn.lock"
+if ! flock -n 9  ; then
+    # printf 'another instance is running\n';
+    if check ;then
+        echo "{\"text\":\"\",\"alt\":\"VPN\",\"tooltip\":\"dns\",\"class\":\"loading\"}"
+    else
+        echo "{\"text\":\"\",\"alt\":\"VPN\",\"tooltip\":\"dns\",\"class\":\"loading\"}"
+    fi
+    exit 0
+fi
+
+
+case "$1" in
+    "info")  info ;;         
+    "toggle") toggle ;;
+    "check") check ;;
+    "on") on ;;
+    "off") off ;;
+esac

@@ -1,0 +1,40 @@
+#!/bin/bash
+
+
+info (){
+    pid="$(pgrep planner)"
+    status="$(swaymsg -t get_tree |   jq -r 'recurse(.nodes[]?) | select(.name == "__i3_scratch").floating_nodes[].app_id, select(.name == "__i3_scratch").floating_nodes[].window_properties.title' | grep -v null  | grep planner)"
+    if [[ $? -eq 0 ]];then
+        echo "{\"text\":\"on\",\"alt\":\"on\",\"tooltip\":\"ToDo hidden \",\"class\":\"hidden\"}"
+    else
+        echo "{\"text\":\"off\",\"alt\":\"off\",\"tooltip\":\"ToDo active\",\"class\":\"not_hidden\"}"
+    fi 
+}
+
+
+toggle (){ 
+    status="$(swaymsg -t get_tree |   jq -r 'recurse(.nodes[]?) | select(.name == "__i3_scratch").floating_nodes[].app_id, select(.name == "__i3_scratch").floating_nodes[].window_properties.title' | grep -v null  | grep planner)"
+    if [[ $? -eq 0 ]];then
+        swaymsg '[title="planner" app_id="planner"]' scratchpad show, move position 1560px 00px
+    else
+        swaymsg '[title="planner" app_id="planner"]' move scratchpad 
+    fi 
+    pkill -RTMIN+6 waybar
+}
+# change state if hidden or not
+
+
+
+exec 8> "/tmp/planner.lock"
+if ! flock -n 8  ; then
+    printf 'another instance is running\n';
+    exit 1
+ fi
+
+#pkill -RTMIN+6 waybar
+case "$1" in
+    "info")  info ;;         
+    "toggle") toggle ;;
+    "check") check ;;
+
+esac
