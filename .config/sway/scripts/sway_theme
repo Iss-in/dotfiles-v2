@@ -30,13 +30,18 @@ reload_system() {
     cursor_theme="$(grep 'gtk-cursor-theme-name' "$config" | cut -d'=' -f2)"
     font_name="$(grep 'gtk-font-name' "$config" | cut -d'=' -f2)"
     gsettings set "$gnome_schema" gtk-theme "$gtk_theme"
+    sleep .5
     # echo $"(gsettings set "$gnome_schema" gtk-theme "$gtk_theme")"
     gsettings set "$gnome_schema" icon-theme "$icon_theme"
+    sleep .5
     gsettings set "$gnome_schema" cursor-theme "$cursor_theme"
+    sleep .5
+
     gsettings set "$gnome_schema" font-name "$font_name"
+    sleep .5
 
     #reload ulauncher files
-    # kill -HUP $(psg "ulauncher --hide-window --no-window-shadow" | awk '{print $2}')
+    kill -HUP $(psg "ulauncher --hide-window --no-window-shadow" | awk '{print $2}')
     # reload dunst 
     killall dunst
     # killall -SIGUSR2 waybar
@@ -51,6 +56,7 @@ dark_mode() {
     sed -i "s|gtk-icon-theme-name=.*|gtk-icon-theme-name=$ICON_DARK_THEME|g" $config
     sed -i 's|"theme-name.*|"theme-name": "dark"|g'  $HOME/.config/ulauncher/settings.json
     ln -sf $HOME/.config/sway/themes/vscode.json $HOME/.config/sway/themes/colorscheme.json
+    ln -sf $HOME/.icons/custom-dark/scalable/apps/joplin.png $HOME/.icons/default/joplin.png 
 }
 
 
@@ -59,13 +65,14 @@ light_mode() {
     sed -i "s|gtk-icon-theme-name=.*|gtk-icon-theme-name=$ICON_LIGHT_THEME|g" $config
     sed -i 's|"theme-name.*|"theme-name": "light"|g'  $HOME/.config/ulauncher/settings.json
     ln -sf $HOME/.config/sway/themes/light.json $HOME/.config/sway/themes/colorscheme.json
+    ln -sf $HOME/.icons/custom/scalable/apps/joplin.png $HOME/.icons/default/joplin.png 
 }
 
 info() {
     if [[ ! -z $dark_theme ]];then
-        echo "{\"text\":\"\",\"alt\":\"Theme\",\"tooltip\":\"Dark mode\",\"class\":\"dark\"}"
+        echo "{\"text\":\"\",\"alt\":\"Theme\",\"tooltip\":\"Dark mode\",\"class\":\"dark\"}"
     else
-        echo "{\"text\":\"\",\"alt\":\"Theme\",\"tooltip\":\"Light Mode\",\"class\":\"light\"}"
+        echo "{\"text\":\"\",\"alt\":\"Theme\",\"tooltip\":\"Light Mode\",\"class\":\"light\"}"
     fi
 }
 

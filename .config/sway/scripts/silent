@@ -3,12 +3,18 @@
 
 info (){
     val=$(dunstctl is-paused)
+    # if [[ $? -ne 0 ]];then
+    #     echo "{\"text\":\"No clue brp\",\"alt\":\"dnd on\",\"tooltip\":\" dnd on\",\"class\":\"on\"}"
+    # fi
     case "$val" in
     "false")
-        echo "{\"text\":\"\",\"alt\":\"dnd off\",\"tooltip\":\"session active\",\"class\":\"off\"}"
+        echo "{\"text\":\"\",\"alt\":\"dnd off\",\"tooltip\":\"session active\",\"class\":\"off\"}"
         ;;
     "true")
-        echo "{\"text\":\"\",\"alt\":\"dnd on\",\"tooltip\":\" dnd on\",\"class\":\"on\"}"
+        echo "{\"text\":\"\",\"alt\":\"dnd on\",\"tooltip\":\" dnd on\",\"class\":\"on\"}"
+        ;;
+    *)
+        echo "{\"text\":\"No clue brp\",\"alt\":\"dnd on\",\"tooltip\":\" dnd on\",\"class\":\"on\"}"
         ;;
     esac
 }
@@ -24,12 +30,12 @@ toggle (){
         dunstctl set-paused false
         ;;
     esac
-    pkill -RTMIN+3 waybar
+    pkill -RTMIN+5 waybar
 }
 
 
 
-exec 13> "/tmp/planner.lock"
+exec 13> "/tmp/silent.lock"
 if ! flock -n 13  ; then
     printf 'another instance is running\n';
     exit 1

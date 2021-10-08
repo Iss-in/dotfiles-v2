@@ -13,29 +13,29 @@ if [[ $1 == "print" ]];then
 	exit 0
 fi
 if [[ -z $(pgrep wf-recorder) ]];then
-	dunstify "Recording Started" -r 688 -i none -a arch
+	dunstify "Recording Started" -r 688 -i record -a arch
 	if [[ "$1" == "-s" ]];then
 		echo 1
 		wf-recorder -f $HOME/Videos/Recordings/$filename -a "$active" -g "$(slurp -c "#FFFFFF")" >/dev/null 2>&1 &
 		sleep 2 
 		while [ ! -z $(pgrep -x slurp) ]; do wait; done
-		pkill -RTMIN+8 waybar
+		pkill -RTMIN+1 waybar
 	elif [[ "$1" == "-w" ]];then
 		echo 2
 		wf-recorder -f $HOME/Videos/Recordings/$filename -a "$active" -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp -c "#FFFFFF" )" >/dev/null 2>&1 &
 		sleep 2
 		while [ ! -z $(pgrep -x slurp) ]; do wait; done
-		pkill -RTMIN+8 waybar
+		pkill -RTMIN+1 waybar
 	else
 		wf-recorder -f $HOME/Videos/Recordings/$filename -a "$active" >/dev/null 2>&1 &
-		pkill -RTMIN+8 waybar
+		pkill -RTMIN+1 waybar
 	fi
 	echo '{"status": 5}' | jq --unbuffered --compact-output
 else
 	killall -s SIGINT wf-recorder
-	dunstify "Recording Complete" -r 688 -i none -a arch
+	dunstify "Recording Complete" -r 688 -i record -a arch
 	while [ ! -z $(pgrep -x wf-recorder) ]; do wait; done
-	pkill -RTMIN+8 waybar
+	pkill -RTMIN+1 waybar
 	# name="$(zenity --entry --text "enter a filename")"
 	perl-rename "s/\.(mkv|mp4)$/ $name $&/" $(ls -d $HOME/Videos/Recordings/* -t | head -n1)
 fi

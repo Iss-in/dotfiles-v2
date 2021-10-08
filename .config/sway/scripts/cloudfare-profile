@@ -14,7 +14,7 @@ check (){
         "1.1.1.1")  return 0;;
         *)          return 1;;
     esac
-    # pkill -RTMIN+7 waybar
+    # pkill -RTMIN+2 waybar
 
 }
 #  
@@ -38,11 +38,11 @@ check (){
 #                         pkexec wg-quick up  /home/kushy/.config/wireguard/wgcf-profile.conf
 #                     done
 #                     pkexec wg-quick down  /home/kushy/.config/wireguard/wgcf-profile.conf
-#                     # pkill -RTMIN+7 waybar
+#                     # pkill -RTMIN+2 waybar
 #                     echo '{"text":"loading","alt":"Recording","tooltip":"tooltip","class":"loading"}'
 #                     sleep 3
 #                     echo "disconnected" > $lockfile
-#                     pkill -RTMIN+7 waybar
+#                     pkill -RTMIN+2 waybar
 #     ;;
 #     *)              pkexec wg-quick up  /home/kushy/.config/wireguard/wgcf-profile.conf
 #                     while [[ $? -eq 1 ]]
@@ -50,35 +50,35 @@ check (){
 #                         pkexec wg-quick down  /home/kushy/.config/wireguard/wgcf-profile.conf
 #                     done
 #                     pkexec wg-quick yp  /home/kushy/.config/wireguard/wgcf-profile.conf
-#                     # pkill -RTMIN+7 waybar
+#                     # pkill -RTMIN+2 waybar
 #                     echo '{"text":"loading","alt":"Recording","tooltip":"tooltip","class":"loading"}'
 #                     sleep 3
 #                     echo "connected" > $lockfile
-#                     pkill -RTMIN+7 waybar
+#                     pkill -RTMIN+2 waybar
 #     ;;
 # esac
 
 toggle () {
     if check ;then
-        pkill -RTMIN+7 waybar
+        pkill -RTMIN+2 waybar
         pkexec wg-quick down  /home/kushy/.config/wireguard/wgcf-profile.conf
-        pkill -RTMIN+7 waybar
+        pkill -RTMIN+2 waybar
 
     else
-        pkill -RTMIN+7 waybar
+        pkill -RTMIN+2 waybar
         pkexec wg-quick up  /home/kushy/.config/wireguard/wgcf-profile.conf
-        pkill -RTMIN+7 waybar
+        pkill -RTMIN+2 waybar
     fi
 }
 
 on () {
     pkexec wg-quick up  /home/kushy/.config/wireguard/wgcf-profile.conf
-    pkill -RTMIN+7 waybar
+    pkill -RTMIN+2 waybar
 }
 
 off () {
     pkexec wg-quick down  /home/kushy/.config/wireguard/wgcf-profile.conf
-    pkill -RTMIN+7 waybar
+    pkill -RTMIN+2 waybar
 }
 
 info () {

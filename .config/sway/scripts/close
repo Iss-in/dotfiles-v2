@@ -46,21 +46,28 @@ if ! flock -n 99  ; then
  fi
 
 app="firefox"
+do_not_kill=("ulauncher" "albert")
 app_id="$(swaymsg -t get_tree 2> /dev/null  | jq -r '.. | select(.focused?).app_id')"
 firefox_windows="$(swaymsg -t get_tree 2> /dev/null | jq -r '.. | select(.app_id?).app_id' | grep $app | wc -l)"
-if [[ $app_id == "ulauncher" ]];then
-    # swaymsg kill
-    echo closed
+
+for value in "${do_not_kill[@]}"; do
+    if [[ $value == $app_id ]];then
+        # echo "no kill app"
+        exit 0
+    fi
+done
+
+if [[ $app_id == "firefox" && $firefox_windows -lt 2 ]];then
+    echo firefox single window
     exit 0
 fi
-if [[ $app_id != "$app" ]];then
-    swaymsg kill
-    echo closed
-    exit 0
-fi
-if [[ $firefox_windows -gt 1 ]];then
-    swaymsg kill
-    echo closed2
-    exit 0
-fi
+echo $firefox_windows
+echo $app_id
+swaymsg kill
+
+# if [[ $firefox_windows -gt 1 ]];then
+#     swaymsg kill
+#     echo closed2
+#     exit 0
+# fi
 

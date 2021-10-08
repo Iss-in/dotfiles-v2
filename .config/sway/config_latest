@@ -42,13 +42,10 @@ exec swayidle -w \
          timeout 180 'swaylock -f -c 000000' \
          timeout 240 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f -c 000000'
-#for_window [app_id="firefox"] inhibit_idle fullscreen
+#for_window [app_id="*"] inhibit_idle fullscreen
 #for_window [class="vlc"] inhibit_idle fullscreen
 #for_window [class="Google-chrome"] inhibit_idle fullscreen
-for_window [class="^.*"] inhibit_idle fullscreen
-for_window [app_id="^.*"] inhibit_idle fullscreen
-for_window [app_id="^.*"] inhibit_idle fullscreen
-for_window [class=Microsoft-edge-dev] inhibit_idle focus
+for_window [app_id='microsoft-edge-dev'] inhibit_idle focus
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -90,7 +87,24 @@ input type:pointer {
 }
 output eDP-1 pos 0 0
 #output HDMI-A-2  pos 1920 0
-include "$HOME/.cache/wal/colors-sway"
+
+
+# Custom Theming
+    include "$HOME/.cache/wal/sway-colors"
+
+    #client.<class> <border> <background> <text> <indicator> <child_border> 
+
+    client.focused "$color0" "$color0" "$foreground" "$color8" "$color0"
+    client.focused_inactive "#23242a" "#2b2b2b" "#888888" "#000000" "#000000"
+    client.unfocused "#2c2c2c" "#2b2b2b" "#888888" "#000000" "#000000"
+
+    #border_images.focused ~/.mods/sway-borders/contrib/borders/shadows.png
+    #border_images.focused ~/test.png
+    #border_images.focused_inactive ~/.mods/sway-borders/contrib/borders/shadows.png
+    #border_images.unfocused ~/.mods/sway-borders/contrib/borders/shadows.png
+    #border_images.urgent ~/.mods/sway-borders/contrib/border/image.png
+
+
 output "*" background $wallpaper fill
 
 #
@@ -105,7 +119,8 @@ output "*" background $wallpaper fill
     bindsym $mod+Return exec $term
 
     # Kill focused window
-    bindsym $mod+q kill
+    #bindsym $mod+q kill
+    bindsym $mod+q exec ~/.config/sway/scripts/close
     bindsym $mod+Shift+q exec ~/.scripts/stop -f
 
     #bindsym ctrl+space kill
@@ -135,7 +150,7 @@ output "*" background $wallpaper fill
     #bindsym $mod+$right focus right
     # Or use $mod+[up|down|left|right]
     bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
+    #bindsym $mod+Down focus down
     bindsym $mod+Up focus up
     #bindsym $mod+Right focus right
 
@@ -233,6 +248,8 @@ output "*" background $wallpaper fill
 
     # Move the currently focused window to the scratchpad
     bindsym $mod+Shift+minus move scratchpad
+    bindsym $mod+down move scratchpad
+
     bindsym $mod+h move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
@@ -292,7 +309,8 @@ include /etc/sway/config.d/*
     #exec_always ~/.config/sway/scripts/swayworkspace startup
 # autostart applications
     exec pgadmin4
-
+    #exec env RUST_BACKTRACE=1 swayrd > /tmp/swayrd.log 2>&1
+    exec swayrd
     exec eval $(gnome-keyring-daemon --start)
     exec export SSH_AUTH_SOCK  
     #exec sudo nice -n -20 udevmon -c udevmon.yaml >udevmon.log 2>udevmon.err &
@@ -302,7 +320,8 @@ include /etc/sway/config.d/*
     #exec wl-paste -t text --watch clipman store -P
     #exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
     exec gebaard -b
-    exec ulauncher --hide-window --no-window-shadow
+    # exec ulauncher --hide-window --no-window-shadow
+    exec albert
     exec nm-applet --indicator  
     #exec redshift-gtk
     exec gammastep-indicator -l 26.46523:80.34975
@@ -320,7 +339,11 @@ include /etc/sway/config.d/*
 
     for_window [shell="xwayland"] title_format "%title [XWayland]"
     for_window [app_id="albert"] floating enable, move position 600px 300px
+    for_window [app_id="qtct5"] floating enable
+
     for_window [app_id="ulauncher"] floating enable,sticky enable, move position 670px 300px, border none
+    for_window [title="Super Productivity"] floating enable,sticky enable, resize set width 620 height 710
+
     #for_window [app_id="ulauncher"] exec while pgrep  csgo >/dev/null; do sleep 1; done ; wl-gammactl  -g 1
 
     #for_window [title="vlc"] floating enable, move position 600px 900px
@@ -334,24 +357,26 @@ include /etc/sway/config.d/*
     for_window [app_id="nm-connection-editor"] floating enable
     for_window [app_id="xfce4-appearance-settings"] floating enable
     for_window [app_id="protonvpn"] floating enable
-    for_window [app_id="org.gnome.Nautilus"] floating enable, resize set 800 px 600 px
+    for_window [app_id="org.gnome.Nautilus"] floating enable, resize set 800 px 600 px, border none
+
+    for_window [app_id="firefox"]  title_format "Mozilla Firefox"
     for_window [title="Firefox — Sharing Indicator"] floating enable, move position 1848px 0px
 
     for_window [title="Choose Application" app_id="firefox"] floating enable
     for_window [title="Download Panel — Mozilla Firefox" app_id="firefox"] floating enable , resize set width 1030 height 710
-    for_window [title="File Upload" app_id="firefox"] floating enable, resize set width 1030 height 710
-    for_window [title="Open File" app_id="codium"] floating enable, resize set width 1030 height 710
-    for_window [title="Save As" app_id="codium"] floating enable, resize set width 1030 height 710
-
+    for_window [title="File Upload"] floating enable, resize set width 1030 height 710
+    for_window [title="(?:Open|Save) (?:File|Folder)"] floating enable, resize set width 1030 height 710
+    # for_window [title="Save *"] floating enable, resize set width 1030 height 710
+#image/File combine
     for_window [title="planner" app_id="planner"] floating enable , sticky enable, resize set width 340 height 1042, move position 1560px 1px
     #for_window [app_id="com.github.alainm23.planner.quick-add"] move position center, border none
     for_window [app_id="com.github.alainm23.planner.quick-add"] move position 650 px 300 px, border none
     for_window [title="com.github.alainm23.planner" app_id="com.github.alainm23.planner"] move position center
 
-    #for_window [title="Picture-in-Picture" app_id="firefox"]  resize set 590 px 333 px, move position 1330 px 723 px
 
+    for_window [app_id="Alacritty"] floating enable,  title_format "Alacritty"
+    for_window [app_id="gnome-terminal-server"] move scratchpad, floating enable, border csd, resize set width 800 height 400
 
-    for_window [app_id="Alacritty"] floating enable
     for_window [app_id="foot"] floating enable,border normal, title_format "  Foot" , resize set width 620 height 300
      for_window [app_id="xpad"] floating enable,border normal 2px, title_format "  Xpad"
 
@@ -372,22 +397,25 @@ include /etc/sway/config.d/*
     for_window [app_id="xpad"] floating enable
     for_window [app_id="indicator-stickynotes"] floating enable
     for_window [title="Picture-in-Picture"]  floating enable,  resize set 590 px 333 px, move position 1330 px 723 px
+
     for_window [class="csgo_linux64"] exec "wl-gammactl  -g 1.2 & sleep 1 &&  while pgrep  csgo >/dev/null; do sleep 1; done ; wl-gammactl  -g 1"
 
-    for_window [app_id="gnome-terminal-server"] move scratchpad
-
-
     #for_window [class="Spotify"] move to workspace 3
-    assign [title="Autoscan - Eclipse IDE"] workspace 2
-    assign [title="Api-Gateway - Eclipse IDE"] workspace 3
+    # assign [title="Autoscan - Eclipse IDE"] workspace 2
+    # assign [title="Api-Gateway - Eclipse IDE"] workspace 3
+    assign [app_id="Eclipse"] workspace 2
+    for_window [app_id="java"] floating enable
 
-    #assign [app_id="firefox"] workspace 1
-    assign [app_id="VSCodium"] workspace 2
+
+    assign [app_id="firefox"] workspace 1
+    for_window [app_id="VSCodium"] move container to  workspace 2
     assign [app_id="kitty"] workspace 2
     assign [class="Spotify"] workspace 3
     assign [title="((Treasure of Nadia)|^(Pleasure)$)"] workspace 3
     assign [title="Signal"] workspace 4
     assign [class="Microsoft-edge-dev"] workspace 5
+    assign [app_id="microsoft-edge-dev"] workspace 5
+
     assign [app_id="com.github.alainm23.planner"] workspace 4
 
     assign [class="BeingADIK"] workspace 3
@@ -396,18 +424,7 @@ include /etc/sway/config.d/*
     assign [class="notion-app-enhanced"] workspace 3
     #for_window [app_id="some_id"] { border none }ss
     #for_window [app_id="some_id" floating] {border normal 2 }
-# Custom Theming
-    #client.<class> <border> <background> <text> <indicator> <child_border> 
 
-    client.focused "#ffffff" "$background" "$foreground" "#000000" "#000000"
-    client.focused_inactive "#23242a" "#373737" "#ffffff" "#000000" "#000000"
-    client.unfocused "#2c2c2c" "#373737" "#ffffff" "#000000" "#000000"
-
-    #border_images.focused ~/.mods/sway-borders/contrib/borders/shadows.png
-    #border_images.focused ~/test.png
-    #border_images.focused_inactive ~/.mods/sway-borders/contrib/borders/shadows.png
-    #border_images.unfocused ~/.mods/sway-borders/contrib/borders/shadows.png
-    #border_images.urgent ~/.mods/sway-borders/contrib/border/image.png
 
     exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
     exec hash dbus-update-activation-environment 2>/dev/null && \
@@ -415,7 +432,7 @@ include /etc/sway/config.d/*
 
 
 # custom settingss
-    default_border pixel 0px
+    default_border pixel 2px
     default_floating_border none
 
     title_align center
@@ -430,8 +447,11 @@ include /etc/sway/config.d/*
 # custom bindings
     bindsym $mod+KP_Add exec light -A 5 #&& dunstify  "$(printf %.0f $(light -G))" -r 100 -a brightness 
     bindsym $mod+KP_Subtract exec light -U 5 #&& dunstify  "$(printf %.0f $(light -G))" -r 100 -a brightness 
-    bindsym $mod+m layout toggle tabbed split
-    #bindsym alt+Tab focus right
+    #bindsym $mod+m layout toggle tabbed split
+    bindsym $mod+m exec swayr toggle-tab-shuffle-tile-workspace exclude-floating
+    bindsym $mod+t layout toggle tabbed split
+
+    bindsym alt+Tab focus left
     #bindsym alt+Tab exec alt_tab next
     #bindsym alt+Tab exec swaymsg [con_id=$(swaymsg -t get_tree | ~/.config/sway/scripts/alt_tab t)] focus
 
@@ -441,14 +461,13 @@ include /etc/sway/config.d/*
     bindsym Print exec ~/.scripts/screenshot
     bindsym $mod+shift+d exec killall dunst &&  dunstify 'Dunst' 'reloaded' ;
     #bindsym ISO_Level3_Shift exec albert toggle
-    #bindsym alt+F1 exec albert toggle
-    bindsym alt+F1 exec ulauncher-toggle
-    bindsym $mod+d exec swaymsg fullscreen off & ulauncher-toggle 
+    #bindsym $mod+d exec swaymsg fullscreen off & ulauncher-toggle 
+    bindsym $mod+d exec swaymsg fullscreen off & albert toggle
 
     bindsym $mod+F12 exec volume-change -a 10
     bindsym $mod+F11 exec volume-change -d 10
     bindsym $mod+F10 exec volume-change -t
-    bindsym $mod+t exec com.github.alainm23.planner.quick-add
+    #bindsym $mod+t exec com.github.alainm23.planner.quick-add
 
     bindsym XF86AudioRaiseVolume exec volume-change -a 10
     bindsym XF86AudioLowerVolume exec volume-change -d 10
@@ -463,7 +482,7 @@ include /etc/sway/config.d/*
 # monocle mode
     font pango:roboto medium 10.5
 
-    titlebar_border_thickness 1
+    titlebar_border_thickness 0
     # 0 or 1 only
 
 
@@ -487,4 +506,5 @@ include /etc/sway/config.d/*
     #bindsym $mod+n exec swaymsg [app_id="org.gnome.Nautilus"] scratchpad show || $(exec nautilus & sleep 1 && swaymsg [app_id="org.gnome.Nautilus"] scratchpad show)
     #bindsym $mod+n exec swaymsg '[app_id="org.gnome.Nautilus"] scratchpad show' || exec swaymsg '[app_id="org.gnome.Nautilus"] move scratchpad'
     #bindsym $mod+n exec nautilus -w
+    #bindsym $mod+n exec swaymsg '[app_id="org.gnome.Nautilus"] scratchpad show'
     bindsym $mod+n exec ~/.config/sway/scripts/nautilus_scratchpad
