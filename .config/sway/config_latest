@@ -411,7 +411,7 @@ include /etc/sway/config.d/*
     for_window [app_id="VSCodium"] move container to  workspace 2
     assign [app_id="kitty"] workspace 2
     assign [class="Spotify"] workspace 3
-    assign [title="((Treasure of Nadia)|^(Pleasure)$)"] workspace 3
+ 
     assign [title="Signal"] workspace 4
     assign [class="Microsoft-edge-dev"] workspace 5
     assign [app_id="microsoft-edge-dev"] workspace 5
