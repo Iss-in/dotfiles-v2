@@ -1,0 +1,4 @@
+.tabbrowser-tab::before, 
+.tabbrowser-tab::after{
+  display: none !important;
+}

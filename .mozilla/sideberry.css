@@ -1,0 +1,235 @@
+@media (prefers-color-scheme:dark),(prefers-color-scheme: no-preference){
+    #root[data-style="auto"],
+    #root[data-style="dark"]{
+    
+    --fg-primary: white;
+            --border-color : #1e1e1e;
+            --bg-primary: #303030;
+            /*--bg-primary: rgba(0,0,0,0);*/
+            --bg-secondary: #2a2a2a;
+            --bg-tertiary: #1e1e1e;
+            --tabs-bg-hover : #4f4f4f;
+            --bg-icon  : #DDDDDD;
+            --bg-border2:  rgba(5, 5, 5, 0.5);
+    }}
+    
+    
+    
+    @media (prefers-color-scheme:light){
+    #root[data-style="auto"],
+    #root[data-style="light"]{
+    
+    --fg-primary: black;
+            --bg-primary: #f7f7f7;
+            --bg-secondary: #dddfe2;
+            --border-color : #BDBDBD;
+            --bg-tertiary: #ffffff;
+            --bg-border: #333;
+            --bg-border2:  rgba(51, 51, 51, 0.3);
+            --shadow:  rgba(51, 51, 51, 0.6);
+    }}
+    
+    
+    
+    *{
+        font-family: Cantarell Bold;
+        font-size : 20px;
+    }
+    
+    /*****  dual lines *****/
+    #root {
+      --tabs-height: 36px !important;
+      --tabs-title-padding: 6px;
+      --tabs-font-size: 14px;
+      --tabs-title-lines: 1;
+    }
+    
+    
+    .Tab {
+        margin : 5px 0px 5px 1px !important;
+        border-radius : 4px !important;
+        width : calc(100vw - var(--nav-btn-width) + 30px) !important;
+    
+    }
+    
+    .Tab[data-active="true"] {
+        background-color: var(--bg-secondary);
+        color: var(--fg-primary);
+      
+        margin : 0px 0px;
+        position : center;
+        border : 1px solid var(--border-color);  
+    
+        box-shadow : 0px 0px 1px rgba(60,60,60,0.5);
+    }
+    
+    .Tab .title {
+        color: var(--fg-primary);
+    }
+    
+    
+    .Tab[data-active="true"]  .title {
+        color: var(--fg-primary);
+    }
+    
+    
+    .Tab .t-box {
+      align-items: center;
+      max-height: calc(var(--tabs-height) - var(--tabs-title-padding));
+      overflow: hidden;
+    }
+    
+    .Tab .title {
+      font-size: var(--tabs-font-size);
+      white-space: pre-wrap;
+      line-height: calc((var(--tabs-height) - var(--tabs-title-padding)) / var(--tabs-title-lines));
+    padding : 0px ;
+    margin : 0 13px 0 0;
+    
+    
+    
+    
+    }
+    
+    /*****  dual lines *****/
+    
+    
+    .PinnedDock {
+            box-shadow : none !important;
+            height : 40px !important;
+            border-radius : 0px;  
+            border-bottom : 1px solid  var(--bg-border2);  !important;
+            background-image : none !important;
+            background-color: rgba(33,35,43,0) !important;
+            margin : 5px 0px 5px 2px;
+            width : calc(100vw - var(--nav-btn-width) + 30px) !important;
+    
+    }
+    
+    .PinnedDock::before {
+            background-image : none !important;
+            background-color: rgba(33,35,43,0) !important;
+            radius : 3px;
+            border-bottom : none  !important;
+            box-shadow : none !important;
+            height : 0px !important;
+    }
+    
+    .PinnedTab[data-active="true"] {
+    
+            background-color: var(--bg-tertiary) !important;
+        border-radius : 5px;
+            box-shadow : 0px 2px 3px var(--shadow) !important;
+    }
+    
+    .panel-box {
+    
+        background-color: var(--bg-primary);
+        box-shadow : 0px 0px 6px black;
+        border : none !important;
+        align-content : center;
+        padding : 5px 0px;
+        spacing : 0px;
+        row-gap: 5px;
+       /* width : 35px !important;*/
+    
+    
+    
+    }
+    
+    .panels-box {
+        border : none !important;
+    
+        height: 45px;
+    }
+    
+    .panel-btn {
+        transform: scale(0.95,0.95) !important;
+        border-radius : 4px;
+        padding : 0px 0px;
+        margin : 10px 0 2px 10px;
+    
+    }  
+    .panel-btn[data-active="true"] {
+            background-color: var(--bg-tertiary) !important;
+            box-shadow : 0px 0px 2px var( --bg-secondary) !important;
+    }
+    .NavigationBar{
+        //background-colo #222222;
+        background-color: var(--bg-primary);
+        box-shadow : none !important;
+    }  
+    
+    
+    /**** active Tab
+    ****/
+    
+    
+    
+    
+    /****   active tab indicator -hidden           *****/
+    /*
+    .Tab[data-active="true"] .lvl-wrapper::before {
+    display : none ;
+    background-color: yellow;
+    
+    }
+    */
+    
+    
+    .container {
+    background-color: var(--bg-primary);
+    padding : 5px 0px 5px 0px !important;
+    border-bottom: 1px solid var(--bg-border2) !important;
+    border-top : none !important;
+    box-shadow : none !important;
+    
+    }
+    
+    .scrollable {
+    background-color: var(--bg-primary);
+    margin-left : 0px;
+    }
+    
+    
+    
+    .Tab .close {
+    margin : -0px 5px 0 0px;
+    transform: scale(1.3,1.3);
+    fill :  var(--fg-primary);
+    }
+    
+    .Tab .close > svg{
+    fill : var(--fg-primary);
+    }
+    
+    .Sidebar .settings-btn {
+        /*width : 45px;*/
+        padding : 15px 5px 0 0px;
+    
+        /*box-shadow : 0px 12px 14px #000000 !important;*/
+    }
+    
+    .scroll-container {
+        background-color :  var(--bg-primary) !important;
+        border : none !important;
+        margin-left : 0px;
+    
+    }
+    
+    .scrollable {
+        background-color :  var(--bg-primary) !important;
+        border : none !important;
+    }
+    
+    #icon_ff {
+        fill :   var(--bg-icon) !important;
+    }
+    
+    #icon_addons  {
+        fill :   var(--bg-icon) !important;
+    }
+    
+    #icon_settings {
+        fill :   var(--bg-icon) !important;
+    }

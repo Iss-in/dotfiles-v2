@@ -1,0 +1,29 @@
+/* Firefox Quantum userChrome.css tweaks ************************************************/
+/* Github: https://github.com/aris-t2/customcssforfx ************************************/
+/****************************************************************************************/
+
+/* oooooooold config 
+#new-tab-button {
+  visibility: visible !important;
+  display: unset !important;
+  fill : #f00;
+}
+
+:-moz-any(.tabs-newtab-button,#tabs-newtab-button) {
+  visibility: collapse !important;
+}
+*/
+
+#tabs-newtab-button {
+  /*border: 1px solid white !important;
+  border-radius: 4px !important;
+  background : ;*/
+  fill : white !important;
+}
+
+#tabs-newtab-button:hover {
+  /*border: 1px solid white !important;
+  border-radius: 4px !important;
+  background : ;*/
+  fill : #252b30 !important;
+}

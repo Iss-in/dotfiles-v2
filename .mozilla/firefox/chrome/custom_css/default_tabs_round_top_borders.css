@@ -1,0 +1,128 @@
+/* Firefox Quantum userChrome.css tweaks ************************************************/
+/* Github: https://github.com/aris-t2/customcssforfx ************************************/
+/****************************************************************************************/
+
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* set default namespace to XUL */
+
+
+.tabbrowser-tab > .tab-stack > .tab-background:not([selected=true]) {
+    background-color: rgba(0,0,0,0) !important;
+
+}
+
+
+/* tabbrowser-tab height and curve radius */
+#tabbrowser-tabs{
+  --uc-tab-curve-size: 10px !important;  /* 10px looks about like chromium - 18px looks close to Australis tabs */
+  --tab-min-height: 35px !important;
+  margin-left: 0px !important;
+  border-bottom: 0px solid #000000 !important;
+  background-color: var(--secondary_bg_color) !important; /* right side of tabs*/
+
+  /* height: 30px !important; */
+  }
+
+
+  .tab-stack {
+    background-color: var(--secondary_bg_color) !important;  /* left side of active tabs*/
+    border-bottom: 00px solid black !important;
+  }
+  
+
+.tab-background[selected="true"] {
+  background-color: var(--primary_bg_color) !important;
+  background-image: none !important;
+  /* border-radius: 4px !important; */
+  /* border-bottom: 1px solid #2c2c2c !important; */
+  /* border-top: 2px solid rgba(27, 174, 226, .5)  !important; */
+  border-top: var(--border_thickness) solid var(--active_tab_border_color) !important;
+}
+
+
+
+.tab-background:not([selected=true]) {
+  border-bottom: 0px solid black !important;
+}
+
+
+/* TabsToolbar Height */
+  #TabsToolbar { 
+    height: 35px !important;
+    border-top: 2px;
+    border-top-color: #00ffff;
+  	/* background-color: rgba(255,0,0,.5)  !important;  */
+    /* opacity: .2 !important; */
+  }
+
+
+
+  #TabsToolbar, .tabbrowser-tab {max-height: 40px !important;}
+
+  .tabbrowser-tab:hover{ --uc-tab-fill: rgba(0,0,0,0) }
+  #TabsToolbar[brighttext] .tabbrowser-tab:hover{ --uc-tab-fill: rgba(255,255,255,.1) }
+  .titlebar-spacer[type="pre-tabs"],
+  .tabbrowser-tab:not([positionpinnedtabs])::after{
+    margin-block: 10px 10px !important ;
+    color : #ff0000 !important ;
+    background-color: yellow !important;
+    border-width: 0.4ch !important;
+ 
+  }
+  
+  .tabbrowser-tab:hover > stack::before,
+  .tabbrowser-tab:hover > stack::after,
+  .tabbrowser-tab[selected] > stack::before,
+  .tabbrowser-tab[selected] > stack::after{
+	width: var(--uc-tab-curve-size);
+	height: 100%;
+	display: block;
+	position: absolute;
+	content: "";
+	fill: var(--uc-tab-fill);
+
+	-moz-context-properties: fill;
+	left: calc(0px - var(--uc-tab-curve-size));
+	background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgc3Ryb2tlPSJ3aGl0ZSIgd2lkdGg9IjE2IiBoZWlnaHQ9IjE2IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0IiB2aWV3Qm94PSIwIDAgMTYgMTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+DQogIDxwYXRoIGQ9Ik0wIDE2IEExNiAxNiAwIDAgMCAxNiAwIEwgMTYgMTYgWiIgZmlsbD0iY29udGV4dC1maWxsIiBzdHJva2U9Im5vbmUiPjwvcGF0aD4NCjwvc3ZnPg");
+  
+  background-size: var(--uc-tab-curve-size);
+	background-repeat: no-repeat;
+	background-position-y: bottom;
+  transform: scaleY(var(--uc-tab-vertical-transform));
+
+  background-color: transparent !important;          /*  transparency  */
+  }
+  
+  
+
+  .tabbrowser-tab[selected] > stack::before,
+  .tabbrowser-tab[selected] > stack::after{ fill: var(--toolbar-bgcolor) !important; }
+  
+  .tabbrowser-tab:hover > stack::after,
+  .tabbrowser-tab[selected] > stack::after{
+	left: auto;
+	right: calc(0px - var(--uc-tab-curve-size));
+	transform: scaleX(-1);
+  }
+  
+  .tabbrowser-tab:hover > stack > .tab-background,
+  .tab-background[selected]{
+	border-radius: var(--uc-tab-curve-size) var(--uc-tab-curve-size) 0 0;
+	overflow: -moz-hidden-unscrollable
+  }
+  
+  #tabbrowser-tabs:not([positionpinnedtabs]) .tabbrowser-tab:first-child,
+  #tabbrowser-tabs[positionpinnedtabs] .tabbrowser-tab[pinned]+.tabbrowser-tab:not([pinned]){ 
+	margin-inline-start: var(--uc-tab-curve-size) !important;
+  }
+  
+  /* OPTIONAL - uncomment the following to flip the curves vertically - maybe useful for tabs on bottom ? */
+  /*
+  .tab-background{ -moz-box-direction: reverse }
+  .tabbrowser-tab:hover > stack > .tab-background,
+  .tab-background[selected]{ border-radius: 0 0 var(--uc-tab-curve-size) var(--uc-tab-curve-size) }
+  .tabbrowser-tab > stack::before{ transform: scaleY(-1) !important; }
+  .tabbrowser-tab > stack::after{ transform: scaleY(-1) scaleX(-1) !important; }
+  */
+
+ 

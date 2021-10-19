@@ -1,0 +1,12 @@
+
+/* --in-content-border-highlight : #ff0000;
+--in-content-border-focus : #ffff00; */
+
+.downloadMainArea{
+    border: none !important;
+  }
+
+  #nav-bar toolbarspring {
+    min-width: 10px !important;
+    max-width: 10px !important;
+}

@@ -1,0 +1,180 @@
+
+
+
+
+
+
+
+
+
+
+#titlebar, window, #main-window, #toolbar-menubar, #TabsToolbar, #PersonalToolbar, #navigator-toolbox{
+
+    background-color: transparent !important;
+    
+    -moz-appearance: none !important;
+    
+    background-image: none !important;
+    
+    background-image: none !important;
+    
+    }
+    
+    #main-window{
+    
+    /*background-image: linear-gradient(30deg, rgba(0, 0, 0, 0.4), transparent, rgba(239, 240, 241, 0.5), transparent, rgba(239, 240, 241, 0.3)) !important;*/
+    
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    
+    }
+    
+    /*
+    #toolbar-menubar{
+    
+    border-bottom: solid 0px #013 !important;
+    
+    background-color: #ccc !important;
+    
+    position: relative !important;
+    
+    filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.3)) !important;
+    
+    padding: 6px 0px 6px 0px !important;
+    
+    }
+    *
+    /*#TabsToolbar{
+    
+    background-color: rgba(239, 240, 241, 0.4) !important;
+    
+    background-image: linear-gradient(30deg,rgba(239, 240, 241, 0.5), transparent, rgba(239, 240, 241, 0.5), transparent, rgba(239, 240, 241, 0.3)) !important;
+    
+    }*/
+    /*
+    
+    #PersonalToolbar{
+    
+    background-color: #ccc !important;
+    
+    background-image: none !important; 7.62  REQ: 8.74
+    
+    position: relative !important;
+    
+    }
+    
+    
+    #nav-bar{
+    
+    border-top: none 0px #ccc !important;
+    
+    position: relative !important;
+    
+    filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.3)) !important;
+    
+    background-color: #ccc !important;
+    
+    background-image: none !important;
+    
+    }
+    
+    
+    #navigator-toolbox {
+    
+    --tabs-border-color: transparent !important;
+    
+    }
+    
+    
+    #urlbar, #searchbar{
+    
+    background-color: transparent !important;
+    
+    border-radius: 0px !important;
+    
+    border-style: none !important;
+    
+    border-bottom-style: solid !important;
+    
+    }
+    */
+    /*
+    tab.tabbrowser-tab::after,
+    tab.tabbrowser-tab::before {
+    
+        border: 4px !important; /*change the thickness here*/
+      /*  border-color: #f00 !important;  change by the color you want
+    
+    }
+*/
+
+
+
+/*
+    
+    .tabbrowser-tab{
+    
+    border-style: none !important;
+    
+    }
+    
+    
+    tab.tabbrowser-tab[visuallyselected], tab[visuallyselected]>.tab-stack>.tab-background{
+    
+    filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.3)) !important;
+    
+    border-radius: 0px !important;
+    
+    background-color: #ccc !important;
+    
+    background-image: none !important;
+    
+    }*/
+    /*
+    
+    .tab-background{
+    
+    border-image: none !important;
+    
+    border: 0px #333 solid !important;
+    
+    }
+    
+    */
+   /*  
+    .tab-line {
+    
+    height: 0px !important;
+    
+    background-color: grey !important;
+    
+    }
+    
+   
+    
+    hbox.titlebar-buttonbox-container:nth-child(6) > hbox:nth-child(1){
+    
+    filter: brightness(0%) !important;
+    
+    }*/
+    
+    /*
+    #sidebar-box {
+    
+    background-color: transparent !important;
+    
+    border-right: 0px solid #ccc;
+    
+    box-shadow: 0px !important;
+    
+    }
+    
+    
+    
+    #sidebar-box, #sidebar-box #sidebar {
+    
+    -moz-appearance: none !important;
+    
+    background-color: transparent !important;
+    
+    }
+    */

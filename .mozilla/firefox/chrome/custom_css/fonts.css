@@ -1,0 +1,24 @@
+* {
+    font-family:  Cantarell, Roboto, Oxygen, Ubuntu, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+    /* font-weight: 400 !important; */
+    /* font-size: 15px; */
+    /* font-stretch: extra-condensed !important; */
+    color: var(--primary_fg_color) !important;
+    }
+    /* #urlbar { 
+        font-family: roboto !important;
+        color: #79acf4 !important;
+        text-shadow: black 1px 1px 0px !important;
+        font-weight: 600 !important; 
+        font-size: 17px !important; 
+        text-align: left !important;
+    } */
+    
+    .urlbarView-url{
+         font-size: inherit !important;
+         color: var(--accent_color_2) !important;
+         }
+#urlbar {	
+    font-size: 15.2px !important;
+}
+        

@@ -1,0 +1,9 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* only needed once */
+
+#autohide-context { display:none!important; } /* hide context menuitem "Exit Full Screen Mode" */
+#window-controls  { display:none!important; } /* hide window controls in full screen mode */
+
+:root {
+    --accent: #00ffff;
+  }
+  

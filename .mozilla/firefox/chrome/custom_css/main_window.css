@@ -1,0 +1,27 @@
+.tab-line { display: none !important; } 
+#main-window{
+    background-color: rgba(0, 0, 0, 0) !important;
+    /* background-color:  var(--primary_bg_color) !important; */
+
+    /* border-top: 1px solid #2b2b2b !important;
+    border-bottom: 3px solid #00ffff !important;
+    border-left: 1px solid #000000 !important; */
+    border: none !important;
+    border-radius: 10px !important;
+  }
+
+  #TabsToolbar .private-browsing-indicator {
+    /* background-color: #0c0c0d  !important ; */
+    background-image: url('file:///home/kushy/.icons/custom/incodoge.png') !important ;
+    background-size:100% !important ;
+    /* background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48cGF0aCBkPSJNMzgzLjkgMzA4LjNsMjMuOS02Mi42YzQtMTAuNS0zLjctMjEuNy0xNS0yMS43aC01OC41YzExLTE4LjkgMTcuOC00MC42IDE3LjgtNjR2LS4zYzM5LjItNy44IDY0LTE5LjEgNjQtMzEuNyAwLTEzLjMtMjcuMy0yNS4xLTcwLjEtMzMtOS4yLTMyLjgtMjctNjUuOC00MC42LTgyLjgtOS41LTExLjktMjUuOS0xNS42LTM5LjUtOC44bC0yNy42IDEzLjhjLTkgNC41LTE5LjYgNC41LTI4LjYgMEwxODIuMSAzLjRjLTEzLjYtNi44LTMwLTMuMS0zOS41IDguOC0xMy41IDE3LTMxLjQgNTAtNDAuNiA4Mi44LTQyLjcgNy45LTcwIDE5LjctNzAgMzMgMCAxMi42IDI0LjggMjMuOSA2NCAzMS43di4zYzAgMjMuNCA2LjggNDUuMSAxNy44IDY0SDU2LjNjLTExLjUgMC0xOS4yIDExLjctMTQuNyAyMi4zbDI1LjggNjAuMkMyNy4zIDMyOS44IDAgMzcyLjcgMCA0MjIuNHY0NC44QzAgNDkxLjkgMjAuMSA1MTIgNDQuOCA1MTJoMzU4LjRjMjQuNyAwIDQ0LjgtMjAuMSA0NC44LTQ0Ljh2LTQ0LjhjMC00OC40LTI1LjgtOTAuNC02NC4xLTExNC4xek0xNzYgNDgwbC00MS42LTE5MiA0OS42IDMyIDI0IDQwLTMyIDEyMHptOTYgMGwtMzItMTIwIDI0LTQwIDQ5LjYtMzJMMjcyIDQ4MHptNDEuNy0yOTguNWMtMy45IDExLjktNyAyNC42LTE2LjUgMzMuNC0xMC4xIDkuMy00OCAyMi40LTY0LTI1LTIuOC04LjQtMTUuNC04LjQtMTguMyAwLTE3IDUwLjItNTYgMzIuNC02NCAyNS05LjUtOC44LTEyLjctMjEuNS0xNi41LTMzLjQtLjgtMi41LTYuMy01LjctNi4zLTUuOHYtMTAuOGMyOC4zIDMuNiA2MSA1LjggOTYgNS44czY3LjctMi4xIDk2LTUuOHYxMC44Yy0uMS4xLTUuNiAzLjItNi40IDUuOHoiLz48L3N2Zz4=')  !important ; */
+      }
+
+    #tabbrowser-tab.tab.stack.tab.content.tab-icon-image {
+      background-image: url('file:///home/kushy/.icons/custom/incodoge.png') !important ;
+    }
+
+    .tabbrowser-tab[label="Private Browsing"] .tab-stack .tab-content .tab-icon-image {
+      -moz-appearance: none !important;
+      background-image: url('file:///home/kushy/.icons/custom/incodoge.png') !important ;
+}

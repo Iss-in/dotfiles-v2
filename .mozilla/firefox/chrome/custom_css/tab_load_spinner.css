@@ -1,0 +1,5 @@
+.tab-throbber::before {
+    fill: var(--accent_color_2) !important;
+    opacity: 1 !important;
+    }
+    

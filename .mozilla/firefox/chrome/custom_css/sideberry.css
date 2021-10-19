@@ -1,0 +1,94 @@
+
+/************  hide tabs *****************/
+/* #TabsToolbar { visibility: collapse !important; }
+#main-window[privatebrowsingmode] #TabsToolbar { visibility: visible !important; }
+#main-window[privatebrowsingmode] #navigator-toolbox { margin-left: 0px !important; } */
+
+
+
+
+
+
+
+
+
+  /*****************  autohide ****************/
+  /* #TabsToolbar { visibility: collapse !important; }
+
+#sidebar-header {
+  display: none;
+}
+
+#sidebar-splitter {
+  width: 0 !important;
+}
+
+#main-window[tabsintitlebar="true"]:not([extradragspace="true"]) #TabsToolbar > .toolbar-items {
+    opacity: 0;
+    pointer-events: none;
+}
+#main-window:not([tabsintitlebar="true"]) #TabsToolbar {
+    visibility: collapse !important;
+}
+
+#sidebar {
+    max-width: none !important;
+    min-width: 0px !important;
+}
+
+#sidebar-splitter {
+    display: none !important;
+}
+
+#sidebar-header {
+    visibility: collapse;
+}
+
+
+:root {
+    --thin-tab-width: 40px;
+    --wide-tab-width: 320px;
+}
+
+#sidebar-box {
+    position: relative !important;
+    transition: all 100ms !important;
+    min-width: var(--thin-tab-width) !important;
+    max-width: var(--thin-tab-width) !important;
+}
+#sidebar-box:hover {
+    transition: all 200ms !important;
+    min-width: var(--wide-tab-width) !important;
+    max-width: var(--wide-tab-width) !important;
+    margin-right: calc((var(--wide-tab-width) - var(--thin-tab-width)) * -1) !important;
+    z-index: 1;
+} */
+
+
+
+
+/*************************************************************/
+
+
+
+
+
+/******* hide top title menu *********/
+#sidebar-header {
+  display: none;
+}
+
+/************   tabs layout switch*****************/
+
+#main-window #TabsToolbar {
+  height: 43px !important;
+  overflow: hidden;
+  transition: height .3s .3s !important;
+}
+#main-window[titlepreface*="XXX"] #TabsToolbar {
+  height: 0px !important;
+}
+#main-window[titlepreface*="XXX"] #tabbrowser-tabs {
+  z-index: -40px !important;
+}
+

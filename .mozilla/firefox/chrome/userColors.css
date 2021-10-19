@@ -1,0 +1,125 @@
+/* :root {
+	--dark_color1: #1c1b21;
+	--dark_color2: #33313c;
+	--dark_color3: #4b4757;
+	--dark_color4: #635d73;
+
+	--word_color1: #9059ff;
+	--word_color2: #adabb9;
+	--word_color3: #e1e0e6;
+
+	--light_color1: #fafafa;
+	--light_color2: #adabb9;
+	--light_color3: #9795a3;
+	--light_color4: #878492;
+
+	--other_color1: #332e56;
+	--other_color2: #4b4757;
+	--other_color3: #33313c;
+
+	--accent_color: #19a5e6;
+	--accent_fg_color: #000000;
+
+	--primary_bg_color: #222222;
+	--secondary_bg_color: #2c2c2c;
+
+	--active_tab_border_color : #2c2c2c;
+	--border-color: #ff0000;
+
+	--border_thickness : 0px;
+	--border_radius : 0px;
+} */
+
+
+
+/*================ LIGHT THEME ================*/
+/* @media {
+:root:not([style]),
+:root[style*="--lwt-accent-color:rgb(227, 228, 230);"] { */
+/* :root:-moz-lwtheme-brighttext {
+	--base_color1: var(--light_color1);
+	--base_color2: var(--light_color2);
+	--base_color3: var(--light_color3);
+	--base_color4: var(--light_color4);
+
+	--outer_color1: var(--other_color1);
+	--outer_color2: var(--other_color2);
+	--outer_color3: var(--other_color3);
+
+	--orbit_color: var(--dark_color3);
+
+	--primary_bg_color: #323232;
+	--secondary_bg_color: #242424;
+} */
+/*================ DARK THEME ================*/
+/* @media {
+:root[style*="--lwt-accent-color:rgb(12, 12, 13);"] { */
+/* :root:-moz-lwtheme-darktext {
+	--base_color1: var(--dark_color1);
+	--base_color2: var(--dark_color2);
+	--base_color3: var(--dark_color3);
+	--base_color4: var(--dark_color4);
+
+	--outer_color1: var(--word_color1);
+	--outer_color2: var(--word_color2);
+	--outer_color3: var(--word_color3);
+
+	--orbit_color: var(--light_color3);
+
+	--primary_text_color: black;
+	--secondary_text_color: black;
+
+	--primary_bg_color: #f2f2f2;
+	--secondary_bg_color: #fafafa ;
+
+} */
+
+/* 
+:root:not(:-moz-lwtheme) {
+	--primary_bg_color: #323232;
+	--secondary_bg_color: #242424;
+	--border-color: black;
+
+}
+
+:root[lwt-default-theme-in-dark-mode="true"] {
+
+	--primary_bg_color: #f2f2f2;
+	--secondary_bg_color: var(--light_color1) ;
+	--border-color: #00ffff;
+} */
+
+
+
+@media (prefers-color-scheme: dark) {
+    :root {
+		--primary_bg_color: #303030;
+		--secondary_bg_color: #272727;
+		--tertiary_bg_color: #272727;
+
+		--border_color:  rgba(85, 85, 85,0.3);
+		--border_color_2: rgba(100, 101, 101, 0.7);
+
+		--primary_fg_color : #fff;
+		--accent_color : #4f4f4f;
+		--accent_color_2 : #1997c6;
+
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+		--primary_bg_color: #f7f7f7;
+		--secondary_bg_color: #dddfe2 ;
+		--tertiary_bg_color: #fff;
+
+		--border_color: #e7e7e7;
+		--border_color_2: rgba(1, 1, 1, 0.2);
+		--border_color_3: rgba(51, 51, 51, 0.7);
+
+		--primary_fg_color : #000;
+		--accent_color : #ced0db;
+		--accent_color_2 : #1997c6;
+
+    }
+}

@@ -1,0 +1,162 @@
+/* padding between icons **********/
+/* .toolbarbutton-1 { 
+    padding: 0 5px !important;
+,} */
+
+
+
+  /* #ublock0_raymondhill_net-browser-action:not(:hover):not([open]) { */
+/* 
+#ublock0_raymondhill_net-browser-action {
+    --webextension-menupanel-image: url("file:///home/kushy/.icons/custom/ublock_ext.png") !important;
+    --webextension-menupanel-image-light: url("file:///home/kushy/.icons/custom/ublock_ext.png") !important;
+    --webextension-menupanel-image-dark: url("file:///home/kushy/.icons/custom/ublock_ext_dark.png") !important;
+    --webextension-menupanel-image-2x: url("file:///home/kushy/.icons/custom/ublock_ext.png") !important;
+    --webextension-menupanel-image-2x-light: url("file:///home/kushy/.icons/custom/ublock_ext.png") !important;
+    --webextension-menupanel-image-2x-dark: url("file:///home/kushy/.icons/custom/ublock_ext_dark.png") !important;
+    --webextension-toolbar-image: url("file:///home/kushy/.icons/custom/ublock_ext.png") !important;
+    --webextension-toolbar-image-light: url("file:///home/kushy/.icons/custom/ublock_ext.png") !important;
+    --webextension-toolbar-image-dark: url("file:///home/kushy/.icons/custom/ublock_ext_dark.png") !important;
+    --webextension-toolbar-image-2x: url("file:///home/kushy/.icons/custom/ublock_ext.png") !important;
+    --webextension-toolbar-image-2x-light: url("file:///home/kushy/.icons/custom/ublock_ext.png") !important;
+    --webextension-toolbar-image-2x-dark: url("file:///home/kushy/.icons/custom/ublock_ext_dark.png") !important;
+    transform: scale(1,1) !important;
+} */
+
+@media (prefers-color-scheme: light) {
+    #ublock0_raymondhill_net-browser-action {
+        --webextension-toolbar-image: url("file:///home/kushy/.icons/custom/ublock_ext_dark.png") !important;
+        --webextension-toolbar-image-2x: url("file:///home/kushy/.icons/custom/ublock_ext_dark.png") !important;
+        --webextension-toolbar-image-dark: url("file:///home/kushy/.icons/custom/ublock_ext_dark.png") !important;
+        --webextension-toolbar-image-2x-dark: url("file:///home/kushy/.icons/custom/ublock_ext_dark.png") !important;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    #ublock0_raymondhill_net-browser-action {
+        --webextension-toolbar-image: url("file:///home/kushy/.icons/custom/ublock_ext.png") !important;
+        --webextension-toolbar-image-2x: url("file:///home/kushy/.icons/custom/ublock_ext.png") !important;
+        --webextension-toolbar-image-light: url("file:///home/kushy/.icons/custom/ublock_ext.png") !important;
+        --webextension-toolbar-image-2x-light: url("file:///home/kushy/.icons/custom/ublock_ext.png") !important;
+    }
+}
+
+#_446900e4-71c2-419f-a6a7-df9c091e268b_-browser-action {
+    /* background-color: #0c0c0d !important ; */
+    --webextension-menupanel-image: url("file:///home/kushy/.icons/custom/bitwarden_ext_dark.png") !important;
+    --webextension-menupanel-image-light: url("file:///home/kushy/.icons/custom/bitwarden_ext_dark.png") !important;
+    --webextension-menupanel-image-dark: url("file:///home/kushy/.icons/custom/bitwarden_ext.png") !important;
+    --webextension-menupanel-image-2x: url("file:///home/kushy/.icons/custom/bitwarden_ext_dark.png") !important;
+    --webextension-menupanel-image-2x-light: url("file:///home/kushy/.icons/custom/bitwarden_ext_dark.png") !important;
+    --webextension-menupanel-image-2x-dark: url("file:///home/kushy/.icons/custom/bitwarden_ext.png") !important;
+    --webextension-toolbar-image: url("file:///home/kushy/.icons/custom/bitwarden_ext_dark.png") !important;
+    --webextension-toolbar-image-light: url("file:///home/kushy/.icons/custom/bitwarden_ext_dark.png") !important;
+    --webextension-toolbar-image-dark: url("file:///home/kushy/.icons/custom/bitwarden_ext.png") !important;
+    --webextension-toolbar-image-2x: url("file:///home/kushy/.icons/custom/bitwarden_ext_dark.png") !important;
+    --webextension-toolbar-image-2x-light: url("file:///home/kushy/.icons/custom/bitwarden_ext_dark.png") !important;
+    --webextension-toolbar-image-2x-dark: url("file:///home/kushy/.icons/custom/bitwarden_ext.png") !important;
+    /* transform: scale(1.2,1.2) !important; */
+
+}
+
+#forget-me-not_lusito_info-browser-action {
+    --webextension-menupanel-image: url("file:///home/kushy/.icons/custom/forget-me-not.png") !important;
+    --webextension-menupanel-image-light: url("file:///home/kushy/.icons/custom/forget-me-not.png") !important;
+    --webextension-menupanel-image-dark: url("file:///home/kushy/.icons/custom/forget-me-not.png") !important;
+    --webextension-menupanel-image-2x: url("file:///home/kushy/.icons/custom/forget-me-not.png") !important;
+    --webextension-menupanel-image-2x-light: url("file:///home/kushy/.icons/custom/forget-me-not.png") !important;
+    --webextension-menupanel-image-2x-dark: url("file:///home/kushy/.icons/custom/forget-me-not.png") !important;
+    --webextension-toolbar-image: url("file:///home/kushy/.icons/custom/forget-me-not.png") !important;
+    --webextension-toolbar-image-light: url("file:///home/kushy/.icons/custom/forget-me-not.png") !important;
+    --webextension-toolbar-image-dark: url("file:///home/kushy/.icons/custom/forget-me-not.png") !important;
+    --webextension-toolbar-image-2x: url("file:///home/kushy/.icons/custom/forget-me-not.png") !important;
+    --webextension-toolbar-image-2x-light: url("file:///home/kushy/.icons/custom/forget-me-not.png") !important;
+    --webextension-toolbar-image-2x-dark: url("file:///home/kushy/.icons/custom/forget-me-not.png") !important;
+    /* background-color: #0c0c0d !important ;
+    padding: 5px;
+    margin: 5px; */
+    /* transform: scale(1.2,1.2) !important; */
+
+}
+/*
+#sync-button:not(:hover):not([open]) {
+    background-color: #0c0c0d !important ;
+}
+#_b9db16a4-6edc-47ec-a1f4-b86292ed211d_-browser-action:not(:hover):not([open]) {
+    background-color: #0c0c0d !important ;
+}
+#_446900e4-71c2-419f-a6a7-df9c091e268b_-browser-action:not(:hover):not([open]) {
+    background-color: #0c0c0d !important ;
+}
+
+#_button:not(:hover):not([open]) {
+    background-color: #0c0c0d !important ;
+}
+
+#jid1-zadieub7xozojw_jetpack-browser-:not(:hover):not([open]) {
+    background-color: #0c0c0d !important ;
+    padding: 5px;
+    margin: 5px;
+
+} */
+
+
+
+#fxa-toolbar-menu-button{
+    /* transform: scale(1.2,1.2) !important; */
+}
+
+#firefoxcolor_mozilla_com-browser-action{
+    /* transform: scale(1.2,1.2) !important; */
+}
+
+#_contain-facebook-browser-action{
+    /* transform: scale(1.2,1.2) !important; */
+}
+
+/************** video downloader helper **********/
+#_b9db16a4-6edc-47ec-a1f4-b86292ed211d_-browser-action{
+    --webextension-menupanel-image: url("file:///home/kushy/.icons/custom/download_helper.png") !important;
+    --webextension-menupanel-image-light: url("file:///home/kushy/.icons/custom/download_helper.png") !important;
+    --webextension-menupanel-image-dark: url("file:///home/kushy/.icons/custom/download_helper.png") !important;
+    --webextension-menupanel-image-2x: url("file:///home/kushy/.icons/custom/download_helper.png") !important;
+    --webextension-menupanel-image-2x-light: url("file:///home/kushy/.icons/custom/download_helper.png") !important;
+    --webextension-menupanel-image-2x-dark: url("file:///home/kushy/.icons/custom/download_helper.png") !important;
+    --webextension-toolbar-image: url("file:///home/kushy/.icons/custom/download_helper.png") !important;
+    --webextension-toolbar-image-light: url("file:///home/kushy/.icons/custom/download_helper.png") !important;
+    --webextension-toolbar-image-dark: url("file:///home/kushy/.icons/custom/download_helper.png") !important;
+    --webextension-toolbar-image-2x: url("file:///home/kushy/.icons/custom/download_helper.png") !important;
+    --webextension-toolbar-image-2x-light: url("file:///home/kushy/.icons/custom/download_helper.png") !important;
+    --webextension-toolbar-image-2x-dark: url("file:///home/kushy/.icons/custom/download_helper.png") !important;
+    /* transform: scale(1.2,1.2) !important; */
+}
+
+#_036a55b4-5e72-4d05-a06c-cba2dfcc134a_-browser-action{
+    --webextension-menupanel-image: url("file:///home/kushy/.icons/custom/gtranslate.png") !important;
+    --webextension-menupanel-image-light: url("file:///home/kushy/.icons/custom/gtranslate.png") !important;
+    --webextension-menupanel-image-dark: url("file:///home/kushy/.icons/custom/gtranslate.png") !important;
+    --webextension-menupanel-image-2x: url("file:///home/kushy/.icons/custom/gtranslate.png") !important;
+    --webextension-menupanel-image-2x-light: url("file:///home/kushy/.icons/custom/gtranslate.png") !important;
+    --webextension-menupanel-image-2x-dark: url("file:///home/kushy/.icons/custom/gtranslate.png") !important;
+    --webextension-toolbar-image: url("file:///home/kushy/.icons/custom/gtranslate.png") !important;
+    --webextension-toolbar-image-light: url("file:///home/kushy/.icons/custom/gtranslate.png") !important;
+    --webextension-toolbar-image-dark: url("file:///home/kushy/.icons/custom/gtranslate.png") !important;
+    --webextension-toolbar-image-2x: url("file:///home/kushy/.icons/custom/gtranslate.png") !important;
+    --webextension-toolbar-image-2x-light: url("file:///home/kushy/.icons/custom/gtranslate.png") !important;
+    --webextension-toolbar-image-2x-dark: url("file:///home/kushy/.icons/custom/gtranslate.png") !important;
+}
+
+#_c2c003ee-bd69-42a2-b0e9-6f34222cb046_-browser-action{
+    /* --webextension-menupanel-image: url("../assets/power-off-dark.svg") !important;
+    --webextension-menupanel-image-light:url("../assets/power-off-light.svg") !important; 
+    --webextension-menupanel-image-dark: url("../assets/power-off.svg") !important;
+    --webextension-menupanel-image-2x:  url("../assets/power-off-dark.svg") !important;
+    --webextension-menupanel-image-2x-light: url("../assets/power-off-light.svg") !important; 
+    --webextension-menupanel-image-2x-dark: url("../assets/power-off.svg") !important; */
+    --webextension-toolbar-image: url("file:///home/kushy/.icons/custom/power-off-dark.svg") !important;
+    --webextension-toolbar-image-light: url("file:///home/kushy/.icons/custom/power-off-light.svg") !important; 
+    /* --webextension-toolbar-image-dark: url("../assets/power-off.svg") !important;
+    --webextension-toolbar-image-2x: url("../assets/power-off-dark.svg") !important;
+    --webextension-toolbar-image-2x-light:url("../assets/power-off-light.svg") !important; 
+    --webextension-toolbar-image-2x-dark: url("../assets/power-off.svg") !important; */
+}

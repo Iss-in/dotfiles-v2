@@ -1,0 +1,50 @@
+/* @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); set default namespace to XUL */
+/* #sidebar-header,#sidebar-search-container,#bookmarks-view-children,#historyTree {
+  color: #fff !important;
+  background-color: #1a1a1a !important;
+  -moz-appearance:none!important;
+  border-color:transparent !important;
+}
+#bookmarksPanel, #history-panel {
+  color: #fff !important;
+  background-color: #222222 !important;
+} */
+/* Bookmarks sidebar: change hover color */
+/* #bookmarks-view treechildren::-moz-tree-cell(hover) {
+  background-color: #222222 !important;
+} */
+/* @import "../userColors.css"; */
+
+@-moz-document url(chrome://browser/content/browser.xhtml){
+  #browser{ overflow: hidden }
+  #sidebar-box{ 
+    /* border: none !important; */
+    box-shadow: none !important;
+     position: relative;  z-index: 1 ;
+     padding-left: 8px !important;
+     background-color : var(--primary_bg_color)  !important; 
+     /* border-right : 1px solid var(--border_color) !important; */
+     /* border-right : 12px solid  #f00 !important; */
+  }
+  #sidebar-splitter {
+    /* display : none; */
+    -moz-appearance: none !important;
+
+    width: 8px !important;
+    border: none !important;
+    background-color : var(--primary_bg_color)  !important;
+    box-shadow:none !important;
+    border-right : 1px solid  var(--border_color_2) !important;
+    /* background-color: var(--secondary_bg_color) !important; */
+
+    /* border-right : 2px solid black !imsecondary_bg_colorportant; */
+
+  }
+}
+
+
+ /* #main-window {
+	-moz-appearance: none !important;
+	background-color: rgba(255,255,255,0) !important;
+	background-image: none !important;
+} */
