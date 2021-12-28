@@ -1,8 +1,0 @@
-# echo "This is a sample quote This is a sample quote This is a sample - Kushy"> quote.txt
-#IFS=- read var1 var2 <<< "$(cat quote.txt)"
-case "$1" in
-"text")  cat /tmp/quote.txt | sed 's/\. - .*//' | sed 's/\(\(\w\w*\W*\)\{9\}\)/\1\n \$\{offset 205\} /g' ;;
-"author")  cat /tmp/quote.txt |  sed 's/^.*\. -//';;
-"reload") quote > /tmp/quote.txt ;;
-"quote") cat /tmp/quote.txt ;;
-esac
