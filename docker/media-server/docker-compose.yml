@@ -1,0 +1,90 @@
+version: '3'
+services:
+  radarr:
+    container_name: radarr
+    restart: unless-stopped
+    ports:
+      - 7878:7878
+    volumes:
+      - /home/kushy/.mods/sonarr-jackett-radarr/radarr:/config
+      - /home/kushy/Torrents/downloads:/downloads
+      - /home/kushy/Torrents/movies:/movies
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+    image: linuxserver/radarr
+ 
+  sonarr:
+    container_name: sonarr
+    restart: unless-stopped
+    ports:
+      - 8989:8989
+    volumes:
+      - /home/kushy/.mods/sonarr-jackett-radarr/sonarr:/config
+      - /home/kushy/Torrents/tvseries:/tv #optional
+      - /home/kushy/Torrents/downloads:/downloads #optional
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+    image: linuxserver/sonarr
+  
+  jackett:
+    container_name: jackett
+    restart: unless-stopped
+    ports:
+      - 9117:9117
+    volumes:
+      - /home/kushy/.mods/sonarr-jackett-radarr/jackett:/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+    image: linuxserver/jackett
+
+  deluge:
+    container_name: deluge
+    restart: unless-stopped
+    environment:
+          - PUID=1000
+          - PGID=1000
+          - TZ=Asia/Kolkata
+          - DELUGE_LOGLEVEL=error #optional
+    volumes:
+        - /home/kushy/.mods/sonarr-jackett-radarr/deluge:/config
+        - /home/kushy/Torrents/downloads:/ downloads
+    ports:
+        - 8112:8112
+        - 6881:6881
+        - 6881:6881/udp
+    image: lscr.io/linuxserver/deluge
+
+  jellyfin:
+    container_name: jellyfin
+    network_mode: "host"
+    user: 1000:1000
+    environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=Asia/Kolkata
+    volumes:
+      - /home/kushy/.mods/sonarr-jackett-radarr/jellyfin/config:/config
+      - /home/kushy/.mods/sonarr-jackett-radarr/jellyfin/cache:/cache
+      - /home/kushy/Torrents:/media
+    image:  jellyfin/jellyfin
+
+ 
+#  portainer:
+#   container_name: portainer
+#   restart: unless-stopped
+#   ports:
+#    - 9000:9000
+#   volumes:
+#    - /var/run/docker.sock:/var/run/docker.sock
+#    - /home/dockeras/portainer:/data
+#   environment:
+#    - PUID=1000
+#    - PGID=150
+#    - TZ=Europe/Athens
+#   image: portainer/portainer

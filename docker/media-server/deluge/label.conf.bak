@@ -1,0 +1,33 @@
+{
+    "file": 1,
+    "format": 1
+}{
+    "labels": {
+        "tv-sonarr": {
+            "apply_max": false,
+            "apply_move_completed": false,
+            "apply_queue": false,
+            "auto_add": false,
+            "auto_add_trackers": [],
+            "is_auto_managed": false,
+            "max_connections": -1,
+            "max_download_speed": -1,
+            "max_upload_slots": -1,
+            "max_upload_speed": -1,
+            "move_completed": false,
+            "move_completed_path": "",
+            "prioritize_first_last": false,
+            "remove_at_ratio": false,
+            "stop_at_ratio": false,
+            "stop_ratio": 2.0
+        }
+    },
+    "torrent_labels": {
+        "3a1bb012482dfb54afc69912dfb19b99ca1e3278": "tv-sonarr",
+        "6fc293c1e1c5b988889e64aef2e8591373910f7f": "tv-sonarr",
+        "7d9e06e0c7163eaf41c132e7eb81b2df7fe097ae": "tv-sonarr",
+        "96f648b4ac9b3dfb29ccadb9de817f2f0f4e910c": "tv-sonarr",
+        "991d1ec83d81ab20eaaf35ca67f8b25ef2f44c4c": "tv-sonarr",
+        "dc38eed52520c3efa196dc29c42764b41e873b95": "tv-sonarr"
+    }
+}

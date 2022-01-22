@@ -1,0 +1,103 @@
+[2022-01-22 19:39:32.578 +05:30] [INF] [4] Main: Jellyfin version: "10.7.7"
+[2022-01-22 19:39:32.598 +05:30] [INF] [4] Main: Environment Variables: ["[JELLYFIN_LOG_DIR, /config/log]", "[JELLYFIN_CACHE_DIR, /cache]", "[JELLYFIN_DATA_DIR, /config]", "[JELLYFIN_FFMPEG, /usr/lib/jellyfin-ffmpeg/ffmpeg]", "[JELLYFIN_MEDIA_DIR, /media]", "[JELLYFIN_CONFIG_DIR, /config/config]", "[DOTNET_SYSTEM_GLOBALIZATION_INVARIANT, 1]", "[JELLYFIN_WEB_DIR, /jellyfin/jellyfin-web]"]
+[2022-01-22 19:39:32.602 +05:30] [INF] [4] Main: Arguments: ["/jellyfin/jellyfin.dll"]
+[2022-01-22 19:39:32.603 +05:30] [INF] [4] Main: Operating system: "Linux"
+[2022-01-22 19:39:32.603 +05:30] [INF] [4] Main: Architecture: X64
+[2022-01-22 19:39:32.604 +05:30] [INF] [4] Main: 64-Bit Process: True
+[2022-01-22 19:39:32.604 +05:30] [INF] [4] Main: User Interactive: True
+[2022-01-22 19:39:32.604 +05:30] [INF] [4] Main: Processor count: 12
+[2022-01-22 19:39:32.604 +05:30] [INF] [4] Main: Program data path: "/config"
+[2022-01-22 19:39:32.604 +05:30] [INF] [4] Main: Web resources path: "/jellyfin/jellyfin-web"
+[2022-01-22 19:39:32.604 +05:30] [INF] [4] Main: Application directory: "/jellyfin/"
+[2022-01-22 19:39:32.778 +05:30] [INF] [4] Emby.Server.Implementations.AppBase.BaseConfigurationManager: Setting cache path: "/cache"
+[2022-01-22 19:39:32.851 +05:30] [INF] [4] Jellyfin.Networking.Manager.NetworkManager: Defined LAN addresses : "[127.0.0.1/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16]"
+[2022-01-22 19:39:32.851 +05:30] [INF] [4] Jellyfin.Networking.Manager.NetworkManager: Defined LAN exclusions : "[]"
+[2022-01-22 19:39:32.852 +05:30] [INF] [4] Jellyfin.Networking.Manager.NetworkManager: Using LAN addresses: "[127.0.0.1/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16]"
+[2022-01-22 19:39:32.863 +05:30] [INF] [4] Jellyfin.Networking.Manager.NetworkManager: Using bind addresses: "[]"
+[2022-01-22 19:39:32.863 +05:30] [INF] [4] Jellyfin.Networking.Manager.NetworkManager: Using bind exclusions: "[]"
+[2022-01-22 19:39:32.879 +05:30] [INF] [4] Emby.Server.Implementations.ApplicationHost: Loading assemblies
+[2022-01-22 19:39:34.855 +05:30] [INF] [4] Emby.Server.Implementations.AppBase.BaseConfigurationManager: Saving system configuration
+[2022-01-22 19:39:34.856 +05:30] [INF] [4] Emby.Server.Implementations.AppBase.BaseConfigurationManager: Setting cache path: "/cache"
+[2022-01-22 19:39:34.864 +05:30] [INF] [4] Emby.Server.Implementations.Plugins.PluginManager: Loaded plugin: "OMDb" "10.7.7.0"
+[2022-01-22 19:39:34.865 +05:30] [INF] [4] Emby.Server.Implementations.Plugins.PluginManager: Loaded plugin: "MusicBrainz" "10.7.7.0"
+[2022-01-22 19:39:34.865 +05:30] [INF] [4] Emby.Server.Implementations.Plugins.PluginManager: Loaded plugin: "AudioDB" "10.7.7.0"
+[2022-01-22 19:39:34.928 +05:30] [INF] [4] Jellyfin.Server.Migrations.MigrationRunner: Marking all known migrations as applied because this is a fresh install
+[2022-01-22 19:39:34.951 +05:30] [INF] [4] Jellyfin.Server.Migrations.MigrationRunner: Applying migration '"AddDefaultPluginRepository"'
+[2022-01-22 19:39:34.951 +05:30] [INF] [4] Emby.Server.Implementations.AppBase.BaseConfigurationManager: Saving system configuration
+[2022-01-22 19:39:34.952 +05:30] [INF] [4] Emby.Server.Implementations.AppBase.BaseConfigurationManager: Setting cache path: "/cache"
+[2022-01-22 19:39:34.952 +05:30] [INF] [4] Jellyfin.Server.Migrations.MigrationRunner: Migration '"AddDefaultPluginRepository"' applied successfully
+[2022-01-22 19:39:34.953 +05:30] [INF] [4] Jellyfin.Server.Migrations.MigrationRunner: Applying migration '"ReaddDefaultPluginRepository"'
+[2022-01-22 19:39:34.953 +05:30] [INF] [4] Jellyfin.Server.Migrations.MigrationRunner: Migration '"ReaddDefaultPluginRepository"' applied successfully
+[2022-01-22 19:39:34.954 +05:30] [INF] [4] Jellyfin.Server.Migrations.MigrationRunner: Applying migration '"AddPeopleQueryIndex"'
+[2022-01-22 19:39:34.954 +05:30] [INF] [4] Jellyfin.Server.Migrations.Routines.AddPeopleQueryIndex: Creating index idx_TypedBaseItemsUserDataKeyType
+[2022-01-22 19:39:34.959 +05:30] [INF] [4] Jellyfin.Server.Migrations.Routines.AddPeopleQueryIndex: Creating index idx_PeopleNameListOrder
+[2022-01-22 19:39:34.964 +05:30] [INF] [4] Jellyfin.Server.Migrations.MigrationRunner: Migration '"AddPeopleQueryIndex"' applied successfully
+[2022-01-22 19:39:34.974 +05:30] [INF] [4] Main: Kestrel listening on "Any IP4 Address"
+[2022-01-22 19:39:35.348 +05:30] [WRN] [4] Microsoft.AspNetCore.DataProtection.Repositories.EphemeralXmlRepository: Using an in-memory repository. Keys will not be persisted to storage.
+[2022-01-22 19:39:35.349 +05:30] [WRN] [4] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager: Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+[2022-01-22 19:39:35.360 +05:30] [WRN] [4] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager: No XML encryptor configured. Key {63777727-9148-4c92-9d87-34d7a943e99d} may be persisted to storage in unencrypted form.
+[2022-01-22 19:39:35.398 +05:30] [INF] [4] Emby.Server.Implementations.ApplicationHost: Running startup tasks
+[2022-01-22 19:39:35.436 +05:30] [INF] [4] Emby.Server.Implementations.ScheduledTasks.TaskManager: Daily trigger for "Extract Chapter Images" set to fire at 01/23/2022 02:00, which is 6:20:24.5633359 from now.
+[2022-01-22 19:39:35.462 +05:30] [INF] [4] MediaBrowser.MediaEncoding.Encoder.MediaEncoder: Found ffmpeg version "4.3.2"
+[2022-01-22 19:39:35.498 +05:30] [INF] [4] MediaBrowser.MediaEncoding.Encoder.MediaEncoder: Available "decoders": ["h264", "h264_qsv", "h264_cuvid", "hevc", "hevc_qsv", "hevc_cuvid", "mpeg2video", "mpeg2_qsv", "mpeg2_cuvid", "mpeg4", "mpeg4_cuvid", "msmpeg4", "vc1_qsv", "vc1_cuvid", "vp8_cuvid", "vp8_qsv", "vp9_cuvid", "vp9_qsv", "aac", "ac3", "flac", "mp3"]
+[2022-01-22 19:39:35.515 +05:30] [INF] [4] MediaBrowser.MediaEncoding.Encoder.MediaEncoder: Available "encoders": ["libx264", "h264_amf", "h264_nvenc", "h264_qsv", "h264_v4l2m2m", "h264_vaapi", "libx265", "hevc_amf", "hevc_nvenc", "hevc_qsv", "hevc_vaapi", "mpeg4", "msmpeg4", "libvpx", "libvpx-vp9", "aac", "ac3", "flac", "libmp3lame", "libopus", "libvorbis", "srt"]
+[2022-01-22 19:39:35.537 +05:30] [INF] [4] MediaBrowser.MediaEncoding.Encoder.MediaEncoder: Available hwaccel types: ["vdpau", "cuda", "vaapi", "qsv", "drm", "opencl"]
+[2022-01-22 19:39:35.538 +05:30] [INF] [4] MediaBrowser.MediaEncoding.Encoder.MediaEncoder: FFmpeg: SetByArgument: "/usr/lib/jellyfin-ffmpeg/ffmpeg"
+[2022-01-22 19:39:35.540 +05:30] [INF] [4] Emby.Server.Implementations.ApplicationHost: ServerId: "be5273c3bd0a4bfb9e94a747d7353145"
+[2022-01-22 19:39:35.710 +05:30] [INF] [4] Emby.Dlna.Main.DlnaEntryPoint: Registering publisher for "urn:schemas-upnp-org:device:MediaServer:1" on "192.168.1.39/24"
+[2022-01-22 19:39:35.731 +05:30] [INF] [4] Emby.Dlna.Main.DlnaEntryPoint: Registering publisher for "urn:schemas-upnp-org:device:MediaServer:1" on "172.26.0.1/16"
+[2022-01-22 19:39:35.732 +05:30] [INF] [4] Emby.Dlna.Main.DlnaEntryPoint: Registering publisher for "urn:schemas-upnp-org:device:MediaServer:1" on "172.25.0.1/16"
+[2022-01-22 19:39:35.736 +05:30] [INF] [4] Emby.Server.Implementations.ApplicationHost: Executed all pre-startup entry points in 0:00:00.1733351
+[2022-01-22 19:39:35.736 +05:30] [INF] [4] Emby.Server.Implementations.ApplicationHost: Core startup complete
+[2022-01-22 19:39:35.920 +05:30] [INF] [4] Emby.Server.Implementations.ApplicationHost: Executed all post-startup entry points in 0:00:00.1834657
+[2022-01-22 19:39:35.920 +05:30] [INF] [4] Main: Startup complete 0:00:03.5801284
+[2022-01-22 19:39:38.443 +05:30] [INF] [19] Emby.Server.Implementations.ScheduledTasks.TaskManager: "StartupTrigger" fired for task: "Update Plugins"
+[2022-01-22 19:39:38.445 +05:30] [INF] [19] Emby.Server.Implementations.ScheduledTasks.TaskManager: Queuing task "PluginUpdateTask"
+[2022-01-22 19:39:38.452 +05:30] [INF] [4] Emby.Server.Implementations.ScheduledTasks.TaskManager: Executing "Update Plugins"
+[2022-01-22 19:39:41.715 +05:30] [INF] [19] Emby.Server.Implementations.ScheduledTasks.TaskManager: "Update Plugins" Completed after 0 minute(s) and 3 seconds
+[2022-01-22 19:39:41.795 +05:30] [INF] [19] Emby.Server.Implementations.ScheduledTasks.TaskManager: ExecuteQueuedTasks
+[2022-01-22 19:40:09.715 +05:30] [INF] [4] Emby.Server.Implementations.AppBase.BaseConfigurationManager: Saving system configuration
+[2022-01-22 19:40:09.719 +05:30] [INF] [4] Emby.Server.Implementations.AppBase.BaseConfigurationManager: Setting cache path: "/cache"
+[2022-01-22 19:40:09.721 +05:30] [INF] [6] Emby.Server.Implementations.EntryPoints.ExternalPortForwarding: Stopping NAT discovery
+[2022-01-22 19:40:09.903 +05:30] [WRN] [21] Jellyfin.Server.Implementations.Users.UserManager: No users, creating one with username "MyJellyfinUser"
+[2022-01-22 19:40:10.465 +05:30] [WRN] [21] Jellyfin.Server.Middleware.ResponseTimeMiddleware: Slow HTTP Response from "http://127.0.0.1:8096/Startup/User" to "127.0.0.1" in 0:00:00.5716738 with Status Code 200
+[2022-01-22 19:40:44.934 +05:30] [ERR] [24] Jellyfin.Server.Middleware.ExceptionMiddleware: Error processing request: "Could not find a part of the path '/media/tv'". URL "GET" "/Environment/DirectoryContents".
+[2022-01-22 19:40:51.447 +05:30] [WRN] [24] Jellyfin.Server.Middleware.ResponseTimeMiddleware: Slow HTTP Response from "http://127.0.0.1:8096/Library/VirtualFolders?collectionType=tvshows&refreshLibrary=false&name=Shows" to "127.0.0.1" in 0:00:01.1567701 with Status Code 204
+[2022-01-22 19:41:01.340 +05:30] [INF] [4] Emby.Server.Implementations.AppBase.BaseConfigurationManager: Saving system configuration
+[2022-01-22 19:41:01.342 +05:30] [INF] [4] Emby.Server.Implementations.AppBase.BaseConfigurationManager: Setting cache path: "/cache"
+[2022-01-22 19:41:07.228 +05:30] [INF] [4] Jellyfin.Networking.Manager.NetworkManager: Defined LAN addresses : "[127.0.0.1/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16]"
+[2022-01-22 19:41:07.228 +05:30] [INF] [4] Jellyfin.Networking.Manager.NetworkManager: Defined LAN exclusions : "[]"
+[2022-01-22 19:41:07.228 +05:30] [INF] [4] Jellyfin.Networking.Manager.NetworkManager: Using LAN addresses: "[127.0.0.1/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16]"
+[2022-01-22 19:41:07.228 +05:30] [INF] [4] Jellyfin.Networking.Manager.NetworkManager: Using bind addresses: "[]"
+[2022-01-22 19:41:07.228 +05:30] [INF] [4] Jellyfin.Networking.Manager.NetworkManager: Using bind exclusions: "[]"
+[2022-01-22 19:41:08.789 +05:30] [INF] [26] Emby.Server.Implementations.AppBase.BaseConfigurationManager: Saving system configuration
+[2022-01-22 19:41:08.790 +05:30] [INF] [26] Emby.Server.Implementations.AppBase.BaseConfigurationManager: Setting cache path: "/cache"
+[2022-01-22 19:41:08.792 +05:30] [INF] [6] Emby.Server.Implementations.ScheduledTasks.TaskManager: Queuing task "RefreshMediaLibraryTask"
+[2022-01-22 19:41:08.793 +05:30] [INF] [6] Emby.Server.Implementations.EntryPoints.ExternalPortForwarding: Stopping NAT discovery
+[2022-01-22 19:41:08.793 +05:30] [INF] [6] Emby.Server.Implementations.EntryPoints.ExternalPortForwarding: Starting NAT discovery
+[2022-01-22 19:41:08.793 +05:30] [INF] [30] Emby.Server.Implementations.ScheduledTasks.TaskManager: Executing "Scan Media Library"
+[2022-01-22 19:41:08.797 +05:30] [INF] [30] Emby.Server.Implementations.Library.LibraryManager: Validating media library
+[2022-01-22 19:41:15.480 +05:30] [ERR] [26] Jellyfin.Server.Implementations.Users.UserManager: Error authenticating with provider "Default"
+MediaBrowser.Controller.Authentication.AuthenticationException: Invalid username or password
+   at Jellyfin.Server.Implementations.Users.DefaultAuthenticationProvider.Authenticate(String username, String password, User resolvedUser)
+   at Jellyfin.Server.Implementations.Users.UserManager.AuthenticateWithProvider(IAuthenticationProvider provider, String username, String password, User resolvedUser)
+[2022-01-22 19:41:15.512 +05:30] [INF] [26] Jellyfin.Server.Implementations.Users.UserManager: Authentication request for "kushy" has been denied (IP: "127.0.0.1").
+[2022-01-22 19:41:15.514 +05:30] [ERR] [26] Jellyfin.Server.Middleware.ExceptionMiddleware: Error processing request: "Invalid username or password entered". URL "POST" "/Users/authenticatebyname".
+[2022-01-22 19:41:20.114 +05:30] [INF] [24] Jellyfin.Server.Implementations.Users.UserManager: Authentication request for "kushy" has succeeded.
+[2022-01-22 19:41:20.115 +05:30] [INF] [24] Emby.Server.Implementations.Session.SessionManager: Current/Max sessions for user "kushy": 0/0
+[2022-01-22 19:41:20.130 +05:30] [INF] [24] Emby.Server.Implementations.Session.SessionManager: Creating new access token for user deb12086-3266-4479-9ee2-92be735e60e6
+[2022-01-22 19:41:20.320 +05:30] [INF] [35] Emby.Server.Implementations.HttpServer.WebSocketManager: WS "127.0.0.1" request
+[2022-01-22 19:41:37.665 +05:30] [INF] [38] Emby.Drawing.ImageProcessor: Creating image collage and saving to "/cache/temp/1e1b2d654b74408db96f25d0e82efba8.png"
+[2022-01-22 19:41:38.474 +05:30] [INF] [38] Emby.Drawing.ImageProcessor: Completed creation of image collage and saved to "/cache/temp/1e1b2d654b74408db96f25d0e82efba8.png"
+[2022-01-22 19:41:38.528 +05:30] [INF] [24] Emby.Drawing.ImageProcessor: Creating image collage and saving to "/cache/temp/3a446ead25e540838546ec8b51c724a5.png"
+[2022-01-22 19:41:39.334 +05:30] [INF] [24] Emby.Drawing.ImageProcessor: Completed creation of image collage and saved to "/cache/temp/3a446ead25e540838546ec8b51c724a5.png"
+[2022-01-22 19:41:39.366 +05:30] [INF] [24] Emby.Drawing.ImageProcessor: Creating image collage and saving to "/cache/temp/5035bb6d69b0499d9544212fc80fd831.png"
+[2022-01-22 19:41:40.125 +05:30] [INF] [24] Emby.Drawing.ImageProcessor: Completed creation of image collage and saved to "/cache/temp/5035bb6d69b0499d9544212fc80fd831.png"
+[2022-01-22 19:41:40.156 +05:30] [INF] [24] Emby.Drawing.ImageProcessor: Creating image collage and saving to "/cache/temp/1318c0ffd2f04e1da1554b83c362e24b.png"
+[2022-01-22 19:41:40.886 +05:30] [INF] [24] Emby.Drawing.ImageProcessor: Completed creation of image collage and saved to "/cache/temp/1318c0ffd2f04e1da1554b83c362e24b.png"
+[2022-01-22 19:41:40.932 +05:30] [INF] [40] Emby.Drawing.ImageProcessor: Creating image collage and saving to "/cache/temp/9573ee80194741709629df08666614f6.png"
+[2022-01-22 19:41:41.802 +05:30] [INF] [40] Emby.Drawing.ImageProcessor: Completed creation of image collage and saved to "/cache/temp/9573ee80194741709629df08666614f6.png"
+[2022-01-22 19:41:47.677 +05:30] [INF] [28] Emby.Server.Implementations.ScheduledTasks.TaskManager: "Scan Media Library" Completed after 0 minute(s) and 38 seconds
+[2022-01-22 19:41:47.678 +05:30] [INF] [28] Emby.Server.Implementations.ScheduledTasks.TaskManager: ExecuteQueuedTasks
+[2022-01-22 19:41:47.717 +05:30] [INF] [26] Emby.Server.Implementations.IO.LibraryMonitor: Watching directory /media/tvseries
+[2022-01-22 19:42:11.177 +05:30] [INF] [33] Emby.Server.Implementations.HttpServer.WebSocketManager: WS "127.0.0.1" request

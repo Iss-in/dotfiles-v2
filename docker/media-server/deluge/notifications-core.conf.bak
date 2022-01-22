@@ -1,0 +1,16 @@
+{
+    "file": 1,
+    "format": 1
+}{
+    "smtp_enabled": false,
+    "smtp_from": "",
+    "smtp_host": "",
+    "smtp_pass": "",
+    "smtp_port": 0,
+    "smtp_recipients": [],
+    "smtp_tls": false,
+    "smtp_user": "",
+    "subscriptions": {
+        "email": []
+    }
+}
